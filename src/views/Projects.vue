@@ -2,18 +2,19 @@
   <div>
     {{ msg }}
     <div v-if="projects">
-      <project-card v-for="project in projects" :key="project.name" :card="project"></project-card>
+      <h3>A total of {{ projects.length }} projects </h3>
+      <projects-comp :howManyToFilter="projects.length"></projects-comp>
     </div>
   </div>
 </template>
 
 <script>
 import projects from '@/data/projects.js'
-import ProjectCard from '@/components/ProjectCard'
+import Projects from '@/components/Projects'
 
 export default {
   components: {
-    'project-card': ProjectCard
+    'projects-comp': Projects
   },
   data () {
     return {
