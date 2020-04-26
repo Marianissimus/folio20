@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="projects">
-      <project-card v-for="project in projects" :key="project.name" :card="project"></project-card>
+    <div v-if="projects" :class="computedContainerClass">
+      <project-card v-for="project in projects" :key="project.name" :card="project" class="project"></project-card>
     </div>
   </div>
 </template>
@@ -14,6 +14,9 @@ export default {
   props: {
     howManyToFilter: {
       type: Number
+    },
+    from: {
+      type: String
     }
   },
   components: {
@@ -28,6 +31,18 @@ export default {
     if (this.howManyToFilter) {
       this.projects = projects.slice(0, this.howManyToFilter)
     }
+  },
+  computed: {
+    computedContainerClass () {
+      let classes = ['projects-container']
+      this.from === 'home' ? classes.push('home-projects') : classes.push('projects-projects')
+      return classes
+    }
   }
 }
 </script>
+
+<styles lang="scss">
+
+
+</styles>

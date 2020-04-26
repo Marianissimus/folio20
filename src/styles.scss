@@ -1,5 +1,81 @@
-$body-color: blue;
+/*ASSET IMPORTS */
+@use './src/assets/reset.css';
+@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap&family=Nunito:wght@300;400;600&display=swap');
+
+/*** GLOBAL VARIABLES ***/
+$blue: #201FC8;
+$white: #FFF;
+$red: red;
+$linkcolor: orange;
+$padding: 3rem;
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+#app {
+  font-family: 'Nunito', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+// sections //
+
+.bckBlue {
+  background-color: $blue;
+}
+
+.bckRed {
+  background-color: $red;
+}
+
+section {
+  display: block;
+  width: 100vw;
+  min-height: 90vh;
+  color: $white;
+}
+
+// end of sections
 
 .green {
-  color: $body-color;
+  color: $blue;
+  background-color: yellow;
 }
+
+.projects-container {
+  width: 100vw;
+  height: auto;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  flex-wrap: wrap;
+  padding: 10px;
+  overflow: hidden;
+  flex-direction: row;
+}
+
+.home-projects {
+  border: 2px solid orange;
+  background-color: $blue;
+  color: white
+}
+
+.projects-projects {
+  border: 2px solid red;
+  background-color: white;
+}
+
+.project {
+  flex: 0 1 auto;
+  width: 410px;
+  height: auto;
+  border: 3px solid black;
+  margin: 10px;
+}
+

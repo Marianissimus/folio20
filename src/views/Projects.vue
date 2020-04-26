@@ -3,7 +3,7 @@
     {{ msg }}
     <div v-if="projects">
       <h3>A total of {{ projects.length }} projects </h3>
-      <projects-comp :howManyToFilter="projects.length"></projects-comp>
+      <projects-comp :howManyToFilter="projects.length" :from="'projects'"></projects-comp>
     </div>
   </div>
 </template>
