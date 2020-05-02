@@ -16,7 +16,13 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-
+<style lang="scss">
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
 
 </style>

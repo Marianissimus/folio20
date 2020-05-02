@@ -1,15 +1,16 @@
 <template>
   <div>
-    {{ msg }}
-    <div v-if="projects">
-      <h3>A total of {{ projects.length }} projects </h3>
-      <projects-comp :howManyToFilter="projects.length" :from="'projects'"></projects-comp>
+    <div class="heading">
+      <button @click="filter($event)">All</button>
+      <button @click="filter($event)">JavaScript</button>
+      <button @click="filter($event)">jQuery</button>
+      <h3>A total of projects </h3>
     </div>
+    <projects-comp ref="projectsComp" :howManyToFilter="12" :from="'projects'" :filter="currentFilter"></projects-comp>
   </div>
 </template>
 
 <script>
-import projects from '@/data/projects.js'
 import Projects from '@/components/Projects'
 
 export default {
@@ -19,11 +20,22 @@ export default {
   data () {
     return {
       msg: 'this is projects message',
-      projects: null
+      currentFilter: null,
     }
   },
-  created () {
-    this.projects = projects
+  methods: {
+    filter (event) {
+      this.currentFilter = event.target.innerText
+      this.$refs.projectsComp.filterProjects(event.target.innerText)
+    }
   }
 }
 </script>
+
+<style scoped lang="scss">
+.heading {
+  padding-top: 2rem;
+  color: red;
+  text-align: center;
+}
+</style>

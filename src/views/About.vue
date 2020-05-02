@@ -1,31 +1,40 @@
 <template>
-  <section id="about" :class="bckColor">
-    <h1>Front end developer</h1>
-    <h2>& copywriter</h2>
-    <button @click="setBckColor('bckBlue')">blue</button>
-    <button @click="setBckColor('bckRed')">red</button>
+  <section id="about" :class="bgColor" class="headerContainer">
+    <div>
+      <h1>Front end developer</h1>
+      <h2>& copywriter</h2>
+      <h3>I think I need some longer text in here
+        <br>
+          Maybe even two lines? IDK
+      </h3>
+      <h3>
+        <button @click="setbgColor('bckBlue')">blue</button>
+        <button @click="setbgColor('bckRed')">red</button>
+      </h3>
+    </div>
   </section>
 </template>
 
 <script>
-import { store, mutations } from "@/store";
+import { mutations } from "@/store";
 export default {
-  computed: {
-    bckColor() {
-      return store.bckColor;
-    }
-  },
   methods: {
-    setBckColor: mutations.setBckColor
+    setbgColor: mutations.setbgColor
   }
 }
 </script>
 
 <style scoped lang="scss">
   #about {
-    line-height: 3rem;
     text-align: left;
     padding-left: 3rem;
+  }
+
+  .headerContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 
   #about h1 {
@@ -34,5 +43,10 @@ export default {
   }
   #about h2 {
     font-size: 2.5rem;
+  }
+
+  #about h3 {
+    font-size: 1.4rem;
+    line-height: 1.4rem;
   }
 </style>

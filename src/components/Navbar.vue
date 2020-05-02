@@ -16,9 +16,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
   font-family: 'Varela', sans-serif;
+  font-size: 3rem;
   padding: $padding;
+  margin: 0;
 }
 
 .logo {

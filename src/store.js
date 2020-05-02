@@ -1,11 +1,11 @@
 import Vue from "vue";
 
 export const store = Vue.observable({
-  bckColor: 'blue'
+  bgColor: 'bckBlue'
 })
 
 export const mutations = {
-  setBckColor(bckColor) {
-    store.bckColor = bckColor;
+  setbgColor(bgColor) {
+    store.bgColor = bgColor;
   }
 }

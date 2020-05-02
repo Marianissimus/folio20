@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <About/>
+<!--     <About/> -->
     <Projects :howManyToFilter='4' :from="'home'"></Projects>
     <Contact />
   </div>
@@ -8,14 +8,14 @@
 
 <script>
 import Projects from '@/components/Projects.vue'
-import About from '@/views/About.vue'
+// import About from '@/views/About.vue'
 import Contact from '@/views/Contact.vue'
 
 export default {
   name: 'Home',
   components: {
     Projects: Projects,
-    About: About,
+    // About: About,
     Contact: Contact
   }
 }
