@@ -7,22 +7,10 @@
         <br>
           Maybe even two lines? IDK
       </h3>
-      <h3>
-        <button @click="setbgColor('bckBlue')">blue</button>
-        <button @click="setbgColor('bckRed')">red</button>
-      </h3>
     </div>
+    <theme-selector />
   </section>
 </template>
-
-<script>
-import { mutations } from "@/store";
-export default {
-  methods: {
-    setbgColor: mutations.setbgColor
-  }
-}
-</script>
 
 <style scoped lang="scss">
   #about {

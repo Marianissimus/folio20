@@ -19,10 +19,9 @@
   </div>
 
   <div v-else :class="['p-card-container', bgColor]">
-    <h1> {{ card.name }} </h1>
+    <h1 class="project-title"> {{ card.name }} </h1>
     <img :src="card.pic">
-    <h3> {{ card.description }}</h3>
-    <h4>See on:</h4>
+    <h3 class="project-description"> {{ card.description }}</h3>
     <a v-for="link in card.urls" :href="link.url" :key="link.url">
     {{ link.type }}
     </a>
@@ -57,7 +56,7 @@ export default {
 
 <style scoped lang="scss">
 // styling for the HOME view (landing page) here
-// the projects VIEW styles are in the Views/Project
+// the projects VIEW styles are in the Components/Projects
 
 .h-card-container {
   position: relative;
@@ -92,15 +91,6 @@ export default {
       margin: 0 .8rem .8rem 0;
       line-height: 2rem;
      }
-     & a {
-      text-align: center;
-      background-color: red;
-      color: white;
-      max-width: 100px;
-      font-size: 1rem;
-      padding: .8rem;
-      text-decoration: none;
-     }
    }
   & .img {
     flex: 0 0 38.2%;
@@ -127,6 +117,27 @@ export default {
   position: relative;
   top: 1.2rem;
   left: 1.6rem;
+}
+
+// projects card
+.p-card-container {
+  & .project-title {
+      font-size: 3rem;
+      font-family: $fontTernary;
+      font-weight: 100;
+      margin: 1rem 1rem 1rem 0;
+  }
+  & .project-description {
+    font-size: 1.2rem;
+    font-family: $fontSecondary;
+    font-weight: 100;
+    margin: 1rem .8rem .8rem 0;
+    line-height: 2rem;
+  }
+  & img {
+    max-width: 100px;
+    max-height: 100px;
+  }
 }
 
 </style>

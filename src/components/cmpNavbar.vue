@@ -1,6 +1,8 @@
 <template>
   <div id="nav">
-    <span class="logo">Marian Vidoe</span>
+    <span class="logo">Marian Vidoe
+      <theme-selector />
+    </span>
     <span>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
@@ -9,6 +11,15 @@
     </span>
   </div>
 </template>
+
+<script>
+import ThemeSelector from '@/components/cmpThemeSelector'
+export default {
+  components: {
+    'theme-selector': ThemeSelector
+  }
+}
+</script>
 
 <style scoped lang="scss">
 #nav {

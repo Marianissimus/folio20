@@ -1,17 +1,20 @@
 <template>
-  <div>
+  <div :class="bgColor">
     <div class="heading">
       <button @click="filter($event)">All</button>
       <button @click="filter($event)">JavaScript</button>
       <button @click="filter($event)">jQuery</button>
-      <h3>A total of projects </h3>
+      <button @click="filter($event)">Bootstrap</button>
+      <button @click="filter($event)">responsive</button>
+      <button @click="filter($event)">CSS</button>
+      <button @click="filter($event)">anime.js</button>
     </div>
-    <projects-comp ref="projectsComp" :howManyToFilter="12" :from="'projects'" :filter="currentFilter"></projects-comp>
+    <projects-comp ref="projectsComp" :howManyToFilter="12" :from="'projects'" :filter="currentFilter" />
   </div>
 </template>
 
 <script>
-import Projects from '@/components/Projects'
+import Projects from '@/components/cmpProjects'
 
 export default {
   components: {

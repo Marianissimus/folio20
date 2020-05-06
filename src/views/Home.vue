@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Projects from '@/components/Projects.vue'
+import Projects from '@/components/cmpProjects.vue'
 // import About from '@/views/About.vue'
 import Contact from '@/views/Contact.vue'
 

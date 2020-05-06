@@ -17,9 +17,7 @@ $fontTernary: 'Roboto', sans-serif;
 // sections //
 
 .bckBlue {
-  background: #0575E6;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(120,50,255,1) 0%, rgba(50,150,250,1) 91% );
 }
 
 .bckRed {
@@ -28,11 +26,34 @@ $fontTernary: 'Roboto', sans-serif;
   background: linear-gradient(to bottom, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.bckGreen {
+  background: #283c86;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #45a247, #283c86);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #45a247, #283c86); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.bckPurple {
+  background-image: radial-gradient( circle farthest-corner at 14.5% 59%,  rgba(117,0,149,1) 22%, rgba(88,0,112,0.76) 79.5% );
+}
+
 section {
   display: block;
   width: 100vw;
-  min-height: 90vh;
 }
 
+button, a {
+  color: black;
+  background-color: white;
+  font-family: $fontSecondary;
+  font-weight: 100;
+  font-size: 1rem;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  margin: 0 .5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
 
 // end of sections

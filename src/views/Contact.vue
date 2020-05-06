@@ -1,16 +1,25 @@
 <template>
-  <form @submit.prevent="onSubmit" :class="['form', bgColor]">
+  <form novalidate="true"
+    id="contactForm"
+    @submit.prevent="onSubmit"
+    :class="['form', bgColor]">
+    <div v-if="errors.length">
+      <b>Please correct the following error(s):</b>
+    </div>
     <div class="formRow">
       <label for="name">Name</label>
       <input v-model="user.name" type="text" name="name" id="name" class="formRowInput"/>
+      <div class="error" v-if="errors.name">{{ errors.name }}</div>
     </div>
     <div class="formRow">
       <label for="name">Email</label>
-      <input v-model="user.email" type="text" name="email" id="email" class="formRowInput"/>
+      <input v-model="user.email" type="email" name="email" id="email" class="formRowInput"/>
+      <div class="error" v-if="errors.email">{{ errors.email }}</div>
     </div>
     <div class="formRow">
       <label for="message">Message</label>
       <textarea v-model="user.message" name="message" id="message" class="formRowInput"/>
+      <div class="error" v-if="errors.message">{{ errors.message }}</div>
     </div>
     <div class="formRow formButtons">
       <button @click.prevent="onCancel" type="reset">Cancel</button>
@@ -23,6 +32,7 @@
 export default {
   data () {
     return {
+      errors: this.getEmptyErrors(),
       user: {
         name: null,
         email: null,
@@ -31,8 +41,37 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
-      console.log(this.user)
+    getEmptyErrors () {
+      return {
+        name: null,
+        email: null,
+        message: null
+      }
+    },
+    onSubmit (e) {
+      this.errors = this.getEmptyErrors()
+      if (!this.user.name) {
+        this.errors.name = 'Name required'
+      }
+      if (!this.user.email) {
+        this.errors.email = 'Email required'
+      }
+      if (this.user.email && !this.validEmail(this.user.email)) {
+        this.errors.email = 'Valid email please'
+      }
+      if (!this.user.message) {
+        this.errors.message = 'Message required'
+      }
+      let isEmpty = !Object.values(this.errors).some(x => (x !== null && x !== ''))
+      if (isEmpty) {
+        console.log('OK')
+        this.onCancel()
+      }
+      e.preventDefault()
+    },
+    validEmail: function (email) {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
     },
     onCancel () {
       this.user = {
@@ -40,6 +79,7 @@ export default {
         email: null,
         message: null
       }
+      this.errors = this.getEmptyErrors()
     }
   }
 }
@@ -69,6 +109,14 @@ export default {
       padding: 3px 0 5px 7px;
       font-family: $fontSecondary;
       font-size: 1em;
+    }
+    & .error {
+      display: inline-block;
+      margin-top: 1em;
+      margin-left: 30%;
+      font-family: $fontSecondary;
+      font-size: 1em;
+      color: gold;
     }
   }
   & .formButtons {
