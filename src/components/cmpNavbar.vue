@@ -23,7 +23,8 @@ export default {
 
 <style scoped lang="scss">
 #nav {
-  background-color: gray;
+  overflow: hidden;
+  @include bgBlack;
   display: flex;
   justify-content: space-between;
   align-items: center;

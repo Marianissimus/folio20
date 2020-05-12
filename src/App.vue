@@ -23,6 +23,7 @@ export default {
   color: white;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 </style>

@@ -1,7 +1,6 @@
 <template>
-
   <div v-if="from === 'home'" class="h-card-container">
-    <div><span class="number">{{ '0' + JSON.parse(index+1) }}</span></div>
+    <div><span :class="['number', bgColor]">{{ '0' + JSON.parse(index+1) }}</span></div>
     <div :class="['h-card', bgColor]">
       <div class="main">
         <h1> {{ card.name }} </h1>
@@ -12,21 +11,19 @@
         </a>
       </div>
       <div class="img" v-bind:style="{ backgroundImage: 'url(' + card.pic + ')' }"
-        :class="bgOverlay"
       >
+        <div class="overlay" :class="bgColor"></div>
       </div>
     </div>
   </div>
-
-  <div v-else :class="['p-card-container', bgColor]">
+  <div v-else :class="['p-card-container', bgColor]" >
     <h1 class="project-title"> {{ card.name }} </h1>
     <img :src="card.pic">
     <h3 class="project-description"> {{ card.description }}</h3>
     <a v-for="link in card.urls" :href="link.url" :key="link.url">
-    {{ link.type }}
+      {{ link.type }}
     </a>
   </div>
-
 </template>
 
 <script>
@@ -41,38 +38,29 @@ export default {
     index: {
       type: Number
     }
-  },
-  computed: {
-    bgOverlay () {
-      return 'blueOverlay'
-    }
-  },
-  created () {
-    // console.log(this.bgColor)
   }
 }
 </script>
 
 
-<style scoped lang="scss">
+<style  lang="scss">
 // styling for the HOME view (landing page) here
 // the projects VIEW styles are in the Components/Projects
 
 .h-card-container {
   position: relative;
-  margin: 3rem auto;
-  width: 60vw;
-  min-width: 500px;
+  @include mainCard;
 }
 
 .h-card {
-  position: relative;
   z-index: 2;
   display: flex;
   flex-direction: row;
+  overflow: hidden;
+  @include neuShadow;
+  position: relative;
   & .main {
-    flex-basis: 61.8%;
-    flex: 1 0 61.8%;
+    flex: 1 0 60%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -85,42 +73,43 @@ export default {
       margin: 1rem 1rem 1rem 0;
      }
      & h3 {
-      font-size: 1.2rem;
-      font-family: $fontSecondary;
-      font-weight: 100;
       margin: 0 .8rem .8rem 0;
-      line-height: 2rem;
+      @include fontBasic;
      }
    }
   & .img {
-    flex: 0 0 38.2%;
-    position: relative;
+      position: relative;
+      flex: 1 0 30%;
     }
+  & .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 150%;
+    opacity: .6;
+    transition: all ease-in-out .2s;
+    &:hover {
+     opacity: 0.1;
+    }
+  }
 }
 
-.blueOverlay:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(111, 111, 111, .6);
-}
 
 .number {
   font-size: 5rem;
   font-family: $fontSecondary;
-  background: -webkit-linear-gradient(#eee, #333);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: rgba(0, 0, 0, .4);
   position: relative;
-  top: 1.2rem;
+  top: 1rem;
   left: 1.6rem;
+  z-index: 1;
 }
 
 // projects card
 .p-card-container {
+  @include neuShadow;
   & .project-title {
       font-size: 3rem;
       font-family: $fontTernary;
@@ -137,6 +126,11 @@ export default {
   & img {
     max-width: 100px;
     max-height: 100px;
+  }
+  & a {
+    padding: 1rem;
+    max-width: 5rem;
+    text-align: center;
   }
 }
 

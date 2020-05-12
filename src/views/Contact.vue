@@ -9,17 +9,23 @@
     <div class="formRow">
       <label for="name">Name</label>
       <input v-model="user.name" type="text" name="name" id="name" class="formRowInput"/>
-      <div class="error" v-if="errors.name">{{ errors.name }}</div>
+      <transition name="fade">
+        <div class="error" v-if="errors.name">{{ errors.name }}</div>
+      </transition>
     </div>
     <div class="formRow">
       <label for="name">Email</label>
       <input v-model="user.email" type="email" name="email" id="email" class="formRowInput"/>
-      <div class="error" v-if="errors.email">{{ errors.email }}</div>
+      <transition name="fade">
+        <div class="error" v-if="errors.email">{{ errors.email }}</div>
+      </transition>
     </div>
     <div class="formRow">
       <label for="message">Message</label>
       <textarea v-model="user.message" name="message" id="message" class="formRowInput"/>
-      <div class="error" v-if="errors.message">{{ errors.message }}</div>
+      <transition name="fade">
+        <div class="error" v-if="errors.message">{{ errors.message }}</div>
+      </transition>
     </div>
     <div class="formRow formButtons">
       <button @click.prevent="onCancel" type="reset">Cancel</button>
@@ -86,14 +92,19 @@ export default {
 </script>
 
 <style scoped lang="scss">
+$ruler: 16px;
+$color-red: #AE1100;
+$color-bg: #EBECF0;
+$color-shadow: #BABECC;
+$color-white: #FFF;
+
 .form {
-  margin: 3em auto;
+  @include mainCard;
+  @include neuShadow;
   color: white;
   font-family: $fontSecondary;
   font-size: 1.2em;
-  width: 50vw;
-  min-width: 400px;
-  padding: 2em;
+  padding: 2rem 0;
   & .formRow {
     padding: 1em;
     display: block;
@@ -122,13 +133,14 @@ export default {
   & .formButtons {
     text-align: center;
     & button {
+      @include bgWhite;
       color: #777;
       font-size: 1.1rem;
-      background-color: white;
       padding: 1em;
       border-radius: 2px;
       border: none;
       cursor: pointer;
+      @include neuShadow;
       &:nth-of-type(1) {
         margin-right: 10px;
       }
@@ -136,6 +148,13 @@ export default {
         margin-left: 10px;
       }
     }
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
   }
 }
 </style>

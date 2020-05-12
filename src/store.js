@@ -1,7 +1,7 @@
 import Vue from "vue";
 
 export const store = Vue.observable({
-  bgColor: 'bckBlue'
+  bgColor: 'bgBlue'
 })
 
 export const mutations = {

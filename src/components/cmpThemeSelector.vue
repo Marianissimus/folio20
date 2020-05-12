@@ -10,7 +10,7 @@ import { mutations } from "@/store";
 export default {
   data () {
     return {
-      backgrounds: ['bckBlue', 'bckRed', 'bckGreen', 'bckPurple']
+      backgrounds: ['bgBlue', 'bgRed', 'bgGreen', 'bgPurple']
     }
   },
   methods: {
