@@ -1,7 +1,7 @@
 <template>
   <div :class="[bgColor, 'home']">
     <About/>
-    <Projects :howManyToFilter='4' :from="'home'"></Projects>
+    <Projects :homeFilter="'featured'" :from="'home'"></Projects>
     <Contact />
   </div>
 </template>

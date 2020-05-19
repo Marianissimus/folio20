@@ -1,12 +1,47 @@
 const projects = [
   {
+    name: 'Obsession',
+    pic: require('@/assets/images/projects/portfolioold.jpg'),
+    description: 'Restaurant site containing an appetizing food menu with filtering options, a mouth-watering image gallery, and some delicious treats. Made with Vue.js, Vuetify, and JavaScript.',
+    urls: [
+      { type: 'browser', url: 'https://restaurant-f494b.firebaseapp.com/home'},
+      { type: 'github', url: 'https://github.com/Marianissimus/restaurant-vuetify-2'},
+      { type: 'github', url: 'https://github.com/Marianissimus/restaurant-vuetify-112'}
+    ],
+    tags: ['Vue.js', 'Vuetify', 'JavaScript', 'CSS', 'Firebase', 'responsive'],
+    featured: true
+  },
+  {
+    name: 'Link Saver',
+    pic: require('@/assets/images/projects/portfolioold.jpg'),
+    description: 'Save your links and organize them with this app. Has user-defined tags, export, and custom save and filtering functionality. Made with Vue.js, Firebase, Link-prevue. Click \'Demo\' for a test session.',
+    urls: [
+      { type: 'browser', url: 'https://linksaver-209f4.firebaseapp.com/login'},
+      { type: 'github', url: 'https://github.com/Marianissimus/link-saver'}
+    ],
+    tags: ['Vue.js', 'Vuetify', 'JavaScript', 'CSS', 'Firebase', 'responsive'],
+    featured: true
+  },
+  {
+    name: 'Order Game',
+    pic: require('@/assets/images/projects/ordergame.png'),
+    description: 'How fast can you sort this? Arrange the Star Wars movies and 5 other lists. Save your best score and boast to your friends! Made with Vue.js, Firebase, Vuedraggable and custom CSS.',
+    urls: [
+      { type: 'browser', url: 'https://marianissimus.github.io/ordergame/#/'},
+      { type: 'github', url: 'https://github.com/Marianissimus/ordergame'}
+    ],
+    tags: ['Vue.js', 'Vuetify', 'JavaScript', 'CSS', 'Firebase', 'responsive'],
+    featured: true
+  },
+  {
     name: 'Image Gallery',
     pic: require('@/assets/images/projects/imggallery.jpg'),
     description: 'Image slider gallery made with jQuery and anime.js. The transitions and animations can be easily customized by just updating a variable.',
     urls: [
       { type: 'browser', url: 'sites/imggallery/gallery.html'}
     ],
-    tags: ['jQuery', 'anime.js', 'JavaScript']
+    tags: ['jQuery', 'anime.js', 'JavaScript', 'responsive'],
+    featured: true
   },
   {
     name: 'Bislite',
@@ -17,15 +52,15 @@ const projects = [
     ],
     tags: ['Font Awesome', 'CSS', 'responsive']
   },
-  {
-    name: 'JavaScript Calculator',
-    pic: require('@/assets/images/projects/calculator.jpg'),
-    description: 'Fully functional calculator made with JavaScript. It chains operations, cancels inputs, uses decimals, throws errors and more.',
-    urls: [
-      { type: 'codepen', url: 'https://codepen.io/marianissimus/full/yoeeag/'}
-    ],
-    tags: ['JavaScript']
-  },
+  // {
+  //   name: 'JavaScript Calculator',
+  //   pic: require('@/assets/images/projects/calculator.jpg'),
+  //   description: 'Fully functional calculator made with JavaScript. It chains operations, cancels inputs, uses decimals, throws errors and more.',
+  //   urls: [
+  //     { type: 'codepen', url: 'https://codepen.io/marianissimus/full/yoeeag/'}
+  //   ],
+  //   tags: ['JavaScript']
+  // },
   {
     name: 'Grammar test',
     pic: require('@/assets/images/projects/correcting.jpg'),
@@ -33,7 +68,8 @@ const projects = [
     urls: [
       { type: 'codepen', url: 'https://codepen.io/marianissimus/full/XqEZyq/'}
     ],
-    tags: ['jQuery', 'anime.js']
+    tags: ['jQuery', 'anime.js'],
+    featured: true
   },
   {
     name: 'Old Portfolio',
@@ -53,15 +89,15 @@ const projects = [
     ],
     tags: ['JSON', 'AJAX', 'JavaScript']
   },
-  {
-    name: 'Pomodoro Clock',
-    pic: require('@/assets/images/projects/pomodoro.jpg'),
-    description: 'Pomodoro clock made with JavaScript that will automatically switch between a working session and a break; also has a pause functionality.',
-    urls: [
-      { type: 'codepen', url: 'https://codepen.io/marianissimus/full/owoGGp/'}
-    ],
-    tags: ['CSS', 'JavaScript']
-  },
+  // {
+  //   name: 'Pomodoro Clock',
+  //   pic: require('@/assets/images/projects/pomodoro.jpg'),
+  //   description: 'Pomodoro clock made with JavaScript that will automatically switch between a working session and a break; also has a pause functionality.',
+  //   urls: [
+  //     { type: 'codepen', url: 'https://codepen.io/marianissimus/full/owoGGp/'}
+  //   ],
+  //   tags: ['CSS', 'JavaScript']
+  // },
   {
     name: 'Elvis Lives!',
     pic: require('@/assets/images/projects/elvis.jpg'),
@@ -90,16 +126,7 @@ const projects = [
     tags: ['JSON', 'AJAX', 'JavaScript']
   },
   {
-    name: 'Tic Tac Toe',
-    pic: require('@/assets/images/projects/tictactoe.jpg'),
-    description: 'Play tic-tac-toe against the computer. Does not use AI, but a set of rules and algorithms instead.',
-    urls: [
-      { type: 'codepen', url: 'https://codepen.io/marianissimus/full/OjMeGd/'}
-    ],
-    tags: ['jQuery', 'JavaScript']
-  },
-  {
-    name: 'WeatHer App',
+    name: 'Weather App',
     pic: require('@/assets/images/projects/weather.jpg'),
     description: 'Local weather: displays the weather in the fom of an old time telegram. Must be allowed to get location in order to work.',
     urls: [

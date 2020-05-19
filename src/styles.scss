@@ -4,6 +4,7 @@
 
 /*** GLOBAL VARIABLES ***/
 
+
 $blue: #201FC8;
 $white: #FFF;
 $red: red;
@@ -12,7 +13,6 @@ $padding: 3rem;
 $fontPrimary: 'Raleway', sans-serif;
 $fontSecondary: 'Nunito', sans-serif;
 $fontTernary: 'Roboto', sans-serif;
-
 
 @mixin bgWhite {
 background-image: linear-gradient( 89.9deg,  rgba(208,246,255,1) 0.1%, rgba(255,237,237,1) 47.9%, rgba(255,255,231,1) 100.2% );
@@ -24,16 +24,18 @@ background-image: linear-gradient( 89.9deg,  rgba(208,246,255,1) 0.1%, rgba(255,
 
 @mixin mainCard {
   margin: 3rem auto;
-  width: 60vw;
   min-width: 500px;
   max-width: 800px;
 }
 
 @mixin neuShadow {
-  border-radius: 2em;
+  border-radius: 3px;
   box-shadow:
-  12px 12px 16px 0 rgba(0, 0, 0, 0.2),
-  -8px -8px 12px 0 rgba(255, 255, 255, 0.2);
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 20px 20px rgba(0, 0, 0, 0.12),
+  0 0px 10px rgba(0, 0, 0, 0.12);
 }
 
 @mixin smallerShadow {
@@ -42,13 +44,19 @@ background-image: linear-gradient( 89.9deg,  rgba(208,246,255,1) 0.1%, rgba(255,
   -4px -4px 6px 0 rgba(255, 255, 255, 0.1);
 }
 
+@mixin smallBorder {
+  // smaller than 1px white border
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
 @mixin fontBasic {
   font-size: 1.2rem;
   font-family: $fontSecondary;
   font-weight: 100;
   line-height: 2rem;
 }
-
 
 // sections //
 
@@ -61,18 +69,20 @@ background-image: linear-gradient( 89.9deg,  rgba(208,246,255,1) 0.1%, rgba(255,
 }
 
 .bgRed {
-  background-image: radial-gradient( circle farthest-corner at 50.4% 50.5%,  rgba(251,32,86,1) 0%, rgba(135,2,35,1) 90% );
+  background-color: rgba(135,2,35);
 }
 
-.bgGreen {
+.bgCyan {
     background-color: #0575e6;
-    // background: linear-gradient(to right, #0575e6, #021b79);
 }
 
 .bgPurple {
   background-image: radial-gradient( circle farthest-corner at 0% 20%,  rgba(117,0,149,1) 0%, rgba(88,0,112,0.76) 90% );
 }
 
+.bgMoreBlue {
+  background-color: #2011AC;
+}
 
 button, a {
   color: black;
@@ -83,7 +93,6 @@ button, a {
   padding: 1rem;
   border: none;
   outline: none;
-  border-radius: 1em;
   cursor: pointer;
   text-decoration: none;
   @include smallerShadow;

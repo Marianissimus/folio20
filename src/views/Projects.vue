@@ -22,7 +22,6 @@ export default {
   },
   data () {
     return {
-      msg: 'this is projects message',
       currentFilter: null,
     }
   },
