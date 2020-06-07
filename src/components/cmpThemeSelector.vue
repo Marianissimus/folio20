@@ -1,6 +1,9 @@
 <template>
   <span class="theme-select">
-    <button v-for="background in backgrounds" :key="background" @click="setbgColor(background)" :class="background">
+    <button v-for="(background, index) in backgrounds" :key="index" @click="setbgColor(background)" :class="[background, bgColor === background? 'active-theme' : '']">
+    </button>
+    <button class="close-theme-selector" @click="$emit('closeThemeSelector')">
+     <span>X</span>
     </button>
   </span>
 </template>
@@ -21,30 +24,45 @@ export default {
 
 <style scoped lang="scss">
   .theme-select {
-    width: 100%;
-    height: 100px;
+    z-index: 10;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     & button {
-      flex: 0 0 3rem;
-      height: 3rem;
-      margin: 1rem;
+      margin: .5em 0;
+      height: 1em;
+      width: 1em;
       border-radius: 50%;
-      border: none;
+      border: 2px solid #999;
       cursor: pointer;
       transform-style: preserve-3d;
       outline:0;
-      &:after {
-        position: absolute;
-        top: -10%;
-        left: -10%;
-        content: '';
-        width: 120%;
-        height: 120%;
-        border-radius: 50%;
-        background-color: white;
-        transform: translateZ(-1px);
+      color: white;
+      font-family: $fontSecondary;
+      font-weight: 100;
+      font-size: 1rem;
+      padding: 1rem;
+      &.active-theme {
+        border: 2px solid #FFF;
+      }
+    }
+    & .close-theme-selector {
+      margin: .5em 0;
+      cursor: pointer;
+      background-color: black;
+      width: 1em;
+      height: 1em;
+      position: relative;
+      border-radius: 50%;
+      & span {
+        position:absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5em !important;
       }
     }
   }
+
 
 </style>

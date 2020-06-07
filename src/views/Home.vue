@@ -1,7 +1,8 @@
 <template>
-  <div :class="[bgColor, 'home']">
-    <About/>
-    <Projects :homeFilter="'featured'" :from="'home'"></Projects>
+  <div class='home'>
+    <About />
+    <Projects :homeFilter="'featured'" :from="'home'" id="homeprojects" >
+    </Projects>
     <Contact />
   </div>
 </template>
@@ -17,6 +18,20 @@ export default {
     Projects: Projects,
     About: About,
     Contact: Contact
+  },
+  mounted () {
+    window.addEventListener('unload', this.scrollToTop)
+  },
+  beforeDestroy () {
+    window.removeEventListener('unload', this.scrollToTop)
+  },
+  methods: {
+    scrollToTop () {
+      window.scrollTo({
+        top: 0,
+        left: 0
+      })
+    }
   }
 }
 </script>

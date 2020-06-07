@@ -1,25 +1,31 @@
 <template>
   <div>
+    <section-header :title="'Projects'" v-if="from === 'home'"/>
     <h1 v-if="projects && from === 'projects'" class="projects-header">
+      <!-- HEADER to display no of projects -->
       <div v-if="!filter || filter === 'All'">Total {{ projects.length }} projects </div>
       <div v-else>{{ projects.length }} {{ filter }} projects </div>
     </h1>
+    <!-- PROJECTS Group for both Home and More Projects view; use transition on filtering-->
     <transition-group appear name="projects" mode="out-in" v-if="projects" tag="div"
       :class="[ 'projects-container', from === 'home' ? 'home-projects' : 'projects-projects' ]">
       <project-card v-for="(project, index) in projects" :key="project.name" :card="project" :from="from" :index="index"/>
     </transition-group>
-    <div style="text-align: center"  v-if="from === 'home'" class="ctaNav">
-      <router-link to="/projects" @click.native="updateProjects()">See All</router-link>
+    <!-- navigation button from Home to More Projects view -->
+    <div>
+      <btn-w-icon v-if="from === 'home'"
+      :beforeIcon="'arrow-right'" :afterIcon="'arrow-right'" :text="'See All Projects'" :direction="'right'" @click.native="goToProjects()"/>
+      <btn-w-icon v-if="from === 'projects'"
+      :beforeIcon="'arrow-left'" :afterIcon="'arrow-left'" :text="'Return to Main'" :direction="'right'" @click.native="goHome()"/>
     </div>
-    <div style="text-align: center"  v-else class="ctaNav">
-      <router-link to="/">Back to Main Page</router-link>
-    </div>
+    <!-- end of projects component -->
   </div>
 </template>
 
 <script>
 import projects from '@/data/projects.js'
 import ProjectCard from '@/components/cmpProjectCard'
+import cmpSectionHeader from '@/components/cmpSectionHeader'
 
 export default {
   props: {
@@ -34,12 +40,12 @@ export default {
     }
   },
   components: {
-    'project-card': ProjectCard
+    'project-card': ProjectCard,
+    'section-header': cmpSectionHeader
   },
   data () {
     return {
-      projects: null,
-      componentKey: 0
+      projects: null
     }
   },
   mounted () {
@@ -60,113 +66,16 @@ export default {
       }
       this.$emit('projectsUpdated', this.projects.length)
     },
-    updateProjects () {
+    goToProjects () {
+      this.$router.replace('/projects')
       window.scrollTo({
         top: 0,
         left: 0
       })
+    },
+    goHome () {
+      this.$router.replace('/')
     }
   }
 }
 </script>
-<style lang="scss">
-.ctaNav {
-  padding: 3em;
-}
-
-.heading {
-  padding-top: 2rem;
-  color: red;
-  text-align: center;
-}
-.tablink {
-  border-radius: 0;
-  border: none;
-  border-right: 1px solid gray;
-  &:last-of-type {
-    border: none;
-  }
-}
-
-// .projects-container {
-//   overflow: hidden;
-//   color: white;
-// }
-
-.home-projects {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
-}
-
-.projects-projects {
-  @media only screen and (max-width: 900px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    & .p-card-container {
-      width: 60vw;
-      max-width: 500px;
-      margin: 2em auto;
-    }
-  }
-  overflow: hidden;
-  margin: 0 auto;
-  width: 90vw;
-  padding: 1em;
-  padding-bottom: 3rem;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(100px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
-  grid-auto-rows: 1fr;
-  grid-gap: 1.3em;
-  justify-content: space-around;
-  align-content: start;
-  & .p-card-container {
-    overflow: hidden;
-    grid-column: span 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    &:nth-of-type(1),
-    &:nth-of-type(4),
-    &:nth-of-type(5),
-    &:nth-of-type(8),
-    &:nth-of-type(9),
-    &:nth-of-type(12) {
-      grid-column: span 3;
-    }
-  }
-}
-
-.projects-header {
-  text-align: center;
-  margin: 0 auto;
-  & div {
-    padding: 2rem;
-    font-family: $fontSecondary;
-    font-size: 3rem;
-    font-weight: 100;
-  }
-}
-
-
-// first animation trials; work in progress
-.projects-enter-active, .projects-leave-active {
-  transition: all .3s ease-out;
-}
-
-.projects-enter, .projects-leave-to {
-  transform: scale(0.5) translateY(-200px);
-  opacity:0;
-}
-
-// .projects-move {
-//   transition: transform .3s;
-// }
-
-
-</style>

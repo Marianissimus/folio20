@@ -1,41 +1,48 @@
 <template>
-  <form novalidate="true"
-    id="contactForm"
-    @submit.prevent="onSubmit"
-    :class="['form', bgColor]">
-    <div v-if="errors.length">
-      <b>Please correct the following error(s):</b>
-    </div>
-    <div class="formRow">
-      <label for="name">Name</label>
-      <input v-model="user.name" type="text" name="name" id="name" class="formRowInput"/>
-      <transition name="fade">
-        <div class="error" v-if="errors.name">{{ errors.name }}</div>
-      </transition>
-    </div>
-    <div class="formRow">
-      <label for="name">Email</label>
-      <input v-model="user.email" type="email" name="email" id="email" class="formRowInput"/>
-      <transition name="fade">
-        <div class="error" v-if="errors.email">{{ errors.email }}</div>
-      </transition>
-    </div>
-    <div class="formRow">
-      <label for="message">Message</label>
-      <textarea v-model="user.message" name="message" id="message" class="formRowInput"/>
-      <transition name="fade">
-        <div class="error" v-if="errors.message">{{ errors.message }}</div>
-      </transition>
-    </div>
-    <div class="formRow formButtons">
-      <button @click.prevent="onCancel" type="reset">Cancel</button>
-      <button type="submit">Submit</button>
-    </div>
-  </form>
+  <section id="contact">
+    <section-header :title="'Contact'" />
+    <form novalidate="true"
+      id="contactForm"
+      @submit.prevent="onSubmit"
+      :class="['form', bgColor]">
+      <div v-if="errors.length">
+        <b>Please correct the following error(s):</b>
+      </div>
+      <div class="formRow">
+        <label for="name">Name</label>
+        <input v-model="user.name" type="text" name="name" id="name" class="formRowInput"/>
+        <transition name="fade">
+          <div class="error" v-if="errors.name">{{ errors.name }}</div>
+        </transition>
+      </div>
+      <div class="formRow">
+        <label for="name">Email</label>
+        <input v-model="user.email" type="email" name="email" id="email" class="formRowInput"/>
+        <transition name="fade">
+          <div class="error" v-if="errors.email">{{ errors.email }}</div>
+        </transition>
+      </div>
+      <div class="formRow">
+        <label for="message">Message</label>
+        <textarea v-model="user.message" name="message" id="message" class="formRowInput"/>
+        <transition name="fade">
+          <div class="error" v-if="errors.message">{{ errors.message }}</div>
+        </transition>
+      </div>
+      <div class="formRow formButtons">
+        <button @click.prevent="onCancel" type="reset">Cancel</button>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </section>
 </template>
 
 <script>
+import cmpSectionHeader from '@/components/cmpSectionHeader'
 export default {
+  components: {
+    'section-header': cmpSectionHeader
+  },
   data () {
     return {
       errors: this.getEmptyErrors(),
@@ -91,16 +98,12 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-$ruler: 16px;
-$color-red: #AE1100;
-$color-bg: #EBECF0;
-$color-shadow: #BABECC;
-$color-white: #FFF;
-
+<style lang="scss">
 .form {
-  @include mainCard;
-  @include neuShadow;
+  width: 90vw;
+  max-width: 900px;
+  margin: 2em auto;
+  @include shadowNeu;
   color: white;
   font-family: $fontSecondary;
   font-size: 1.2em;
@@ -133,14 +136,22 @@ $color-white: #FFF;
   & .formButtons {
     text-align: center;
     & button {
-      @include bgWhite;
-      color: #777;
-      font-size: 1.1rem;
-      padding: 1em;
-      border-radius: 2px;
-      border: none;
-      cursor: pointer;
-      @include neuShadow;
+      color: white;
+      font-family: $fontTernary;
+      font-weight: 100;
+      font-size: 1rem;
+      padding: 1rem;
+      margin-right: 2px;
+      background-color: rgba(1, 1, 1, .5);
+      font-size: 1.5em;
+      transition: background-color .5s ease-in-out;
+      box-shadow:
+      2px 2px 4px 0 rgba(0, 0, 0, 0.1),
+      2px -2px 4px 0 rgba(255, 255, 255, 0.1);
+      &:hover {
+        background-color: black;
+        transition: background-color .5s ease-in-out;
+      }
       &:nth-of-type(1) {
         margin-right: 10px;
       }

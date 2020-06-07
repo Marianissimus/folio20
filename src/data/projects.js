@@ -1,14 +1,14 @@
 const projects = [
   {
     name: 'Obsession',
-    pic: require('@/assets/images/projects/portfolioold.jpg'),
+    pic: require('@/assets/images/projects/obsession.jpg'),
     description: 'Restaurant site containing an appetizing food menu with filtering options, a mouth-watering image gallery, and some delicious treats. Made with Vue.js, Vuetify, and JavaScript.',
     urls: [
       { type: 'browser', url: 'https://restaurant-f494b.firebaseapp.com/home'},
       { type: 'github', url: 'https://github.com/Marianissimus/restaurant-vuetify-2'},
       { type: 'github', url: 'https://github.com/Marianissimus/restaurant-vuetify-112'}
     ],
-    tags: ['Vue.js', 'Vuetify', 'JavaScript', 'CSS', 'Firebase', 'responsive'],
+    tags: ['Vue.js', 'Vuetify', 'JavaScript', 'CSS', 'Firebase', 'Responsive'],
     featured: true
   },
   {
@@ -19,7 +19,7 @@ const projects = [
       { type: 'browser', url: 'https://linksaver-209f4.firebaseapp.com/login'},
       { type: 'github', url: 'https://github.com/Marianissimus/link-saver'}
     ],
-    tags: ['Vue.js', 'Vuetify', 'JavaScript', 'CSS', 'Firebase', 'responsive'],
+    tags: ['Vue.js', 'Vuetify', 'JavaScript', 'CSS', 'Firebase', 'Responsive'],
     featured: true
   },
   {
@@ -30,27 +30,27 @@ const projects = [
       { type: 'browser', url: 'https://marianissimus.github.io/ordergame/#/'},
       { type: 'github', url: 'https://github.com/Marianissimus/ordergame'}
     ],
-    tags: ['Vue.js', 'Vuetify', 'JavaScript', 'CSS', 'Firebase', 'responsive'],
+    tags: ['Vue.js', 'Vuetify', 'JavaScript', 'CSS', 'Firebase', 'Responsive'],
     featured: true
   },
   {
     name: 'Image Gallery',
     pic: require('@/assets/images/projects/imggallery.jpg'),
-    description: 'Image slider gallery made with jQuery and anime.js. The transitions and animations can be easily customized by just updating a variable.',
+    description: 'Image slider gallery made with jQuery and Anime.js. The transitions and animations can be easily customized by just updating a variable.',
     urls: [
       { type: 'browser', url: 'sites/imggallery/gallery.html'}
     ],
-    tags: ['jQuery', 'anime.js', 'JavaScript', 'responsive'],
+    tags: ['jQuery', 'Anime.js', 'JavaScript', 'Responsive'],
     featured: true
   },
   {
     name: 'Bislite',
     pic: require('@/assets/images/projects/bislite.jpg'),
-    description: 'Fully responsive template made by converting a PSD template with CSS, media queries, and Font Awesome.',
+    description: 'Fully Responsive template made by converting a PSD template with CSS, media queries, and Font Awesome.',
     urls: [
       { type: 'browser', url: 'sites/bislite/index.html'}
     ],
-    tags: ['Font Awesome', 'CSS', 'responsive']
+    tags: ['Font Awesome', 'CSS', 'Responsive']
   },
   // {
   //   name: 'JavaScript Calculator',
@@ -64,21 +64,21 @@ const projects = [
   {
     name: 'Grammar test',
     pic: require('@/assets/images/projects/correcting.jpg'),
-    description: 'Interactive step-by-step correction of a grammar test. Made for a Codepen challenge with jQuery and anime.js, plus the HTML5 tags del and ins.',
+    description: 'Interactive step-by-step correction of a grammar test. Made for a Codepen challenge with jQuery and Anime.js, plus the HTML5 tags del and ins.',
     urls: [
       { type: 'codepen', url: 'https://codepen.io/marianissimus/full/XqEZyq/'}
     ],
-    tags: ['jQuery', 'anime.js'],
+    tags: ['jQuery', 'Anime.js'],
     featured: true
   },
   {
-    name: 'Old Portfolio',
-    pic: require('@/assets/images/projects/correcting.jpg'),
-    description: 'A version of my portfolio made with Bootstrap. Fully customized and responsive.',
+    name: 'Portfolio v3',
+    pic: require('@/assets/images/projects/portfolioold.jpg'),
+    description: '2016 version of my portfolio made with Bootstrap. Fully customized and responsive, includes parallax and other effects.',
     urls: [
       { type: 'browser', url: 'sites/portfolioold/index.html'}
     ],
-    tags: ['Bootstrap', 'CSS', 'responsive']
+    tags: ['Bootstrap', 'CSS', 'Responsive']
   },
   {
     name: 'Random Quote Generator',
@@ -101,11 +101,11 @@ const projects = [
   {
     name: 'Elvis Lives!',
     pic: require('@/assets/images/projects/elvis.jpg'),
-    description: 'Elvis tribute page. Responsive, includes a timeline, and uses pseudo-classes.',
+    description: '2016 Elvis tribute page. Uses pseudo-classes and media queries, and includes a responsive timeline that stacks on smaller viewpoints',
     urls: [
       { type: 'codepen', url: 'https://codepen.io/marianissimus/full/JbJGyg/'}
     ],
-    tags: ['CSS', 'responsive']
+    tags: ['CSS', 'Responsive']
   },
   {
     name: 'Star Rating Widget',

@@ -1,6 +1,11 @@
 <template>
-  <div id="app">
+  <div id="app" :class="[bgColor, isModalVisible ? 'modal-backdrop' : '']">
     <Navbar />
+    <transition name="modal-fade">
+      <modal class="modal"
+        v-show="isModalVisible"
+      />
+    </transition>
     <transition name="bounce">
       <router-view/>
     </transition>
@@ -8,10 +13,13 @@
 </template>
 
 <script>
-import Navbar from './components/cmpNavbar'
+import Navbar from '@/components/cmpNavbar'
+import Modal from '@/components/cmpModal.vue'
+
 export default {
   components: {
-    'Navbar': Navbar
+    'Navbar': Navbar,
+    'modal': Modal
   }
 }
 </script>
@@ -24,6 +32,18 @@ export default {
   margin: 0;
   padding: 0;
   overflow: hidden;
+}
+
+.modal-backdrop{
+  &:after{
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(1, 1, 1, .3);
+  }
 }
 
 </style>
