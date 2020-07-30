@@ -3,7 +3,10 @@ import Vue from "vue";
 export const store = Vue.observable({
   bgColor: 'bgBlue',
   isModalVisible: false,
-  modalImage: null
+  modalImage: null,
+  isLogoAnimating: true,
+  isUserLoggedIn: false,
+  idInHomeView: null
 })
 
 export const mutations = {
@@ -19,5 +22,14 @@ export const mutations = {
   closeModal() {
     store.isModalVisible = false
     store.modalImage = null
+  },
+  setLogoAnimating(arg) {
+    store.isLogoAnimating = arg
+  },
+  setIsUserLoggedIn(arg) {
+    store.isUserLoggedIn = arg
+  },
+  setGoToIdInHomeView(arg) {
+    store.idInHomeView = arg
   }
 }

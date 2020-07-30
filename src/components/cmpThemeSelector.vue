@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mutations } from "@/store";
+import { mutations } from "@/store"
 export default {
   data () {
     return {

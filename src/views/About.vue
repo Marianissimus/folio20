@@ -1,6 +1,6 @@
 <template>
-  <section class="about-view" id="about">
-    <animated-logo v-if="animating" :direction="'forwards'"/>
+  <section :class="['about-view', isLogoAnimating ? 'about-animating' :  '']" id="about">
+    <animated-logo v-if="isLogoAnimating" :direction="'forwards'"/>
     <transition name="landing" v-else appear>
       <div id="profile">
         <div class="profile-text">
@@ -15,10 +15,10 @@
               I create web apps and sites that tell stories and solve problems.
             </li>
             <li>
-              I make them with fast and modern technologies such as Vue.js, JavaScript, Bootstrap and more.
+              I make them with fast and modern <span class="about-link" @click="scrollTo('stack')">technologies</span> such as Vue.js, JavaScript, Bootstrap and more.
             </li>
             <li>
-              Also, as a former copywriter, I am a creative programmer that likes to communicate.
+              Also, as a former copywriter, I am a creative programmer that likes to <span class="about-link" @click="scrollTo('contact')">communicate</span>.
             </li>
           </ul>
         </div>
@@ -37,6 +37,7 @@
 <script>
 import AnimatedLogo from '@/components/cmpAnimatedLogo'
 import Avatar from '@/components/cmpAvatar'
+import { mutations } from '@/store'
 
 export default {
   components: {
@@ -50,8 +51,8 @@ export default {
     }
   },
   mounted () {
-    // reset timer to 3400 or whatever is right after testing
-    setTimeout (() => this.animating = false, 3400)
+    // reset timer to 2000 or whatever is right after testing
+    setTimeout (() => mutations.setLogoAnimating(false), 200)
   },
   methods: {
     scrollTo (where) {
@@ -67,6 +68,18 @@ export default {
     margin: 3em auto 0 auto;
     width: 90vw;
     max-width: 900px;
+  }
+
+  .about-animating {
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .about-link {
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
   }
 
   .landing-enter-active{

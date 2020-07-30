@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="[bgColor, isModalVisible ? 'modal-backdrop' : '']">
-    <Navbar />
+    <Navbar v-if="showNavbar"/>
     <transition name="modal-fade">
       <modal class="modal"
         v-show="isModalVisible"
@@ -20,6 +20,12 @@ export default {
   components: {
     'Navbar': Navbar,
     'modal': Modal
+  },
+  computed: {
+    showNavbar () {
+      let routesToDisplay = ['Home', 'Login', 'Projects']
+      return routesToDisplay.includes(this.$route.name) || this.isLogoAnimating
+    }
   }
 }
 </script>

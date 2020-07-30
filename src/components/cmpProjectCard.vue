@@ -8,7 +8,7 @@
         <div class="titleContainer">
           <h1 v-scrollanimation class="title">{{ card.name }}</h1>
           <div class="img-container" @click="showModal(card.pic)">
-            <img :src="card.pic" class="img-container"
+            <img :src="require('@/assets/images/projects/' + card.pic)" class="img-container"
             v-scrollanimation
             />
           </div>
@@ -17,16 +17,16 @@
           <p>{{ card.description }}</p>
         </div>
         <div class="links-container">
-          <div class="link" v-for="(link, index) in card.urls" :key="link.url"
-          v-scrollanimation
-          :style="{'transition-delay': index * 400 + 'ms'}"
-          >
-            <a
-              :href="link.url" :class="['link-icon', link.type]"
-              @mouseover="getHoverStart(link.type)"
-              @mouseleave="getHoverEnd(link.type)"
-             />
-            <span class="tooltip" :name="link.type">{{ link.type }}</span>
+          <!-- url: actual link, type: browser, codepen, or github, index used for animation, order: irrelevant -->
+          <div class="link" v-for="(url, type, index) in card.urls" :key="index"
+            v-scrollanimation
+            :style="{'transition-delay': index * 400 + 'ms'}"
+            >
+            <a :href="url" :class="['link-icon', type]"
+            @mouseover="getHoverStart(type)"
+            @mouseleave="getHoverEnd(type)"
+            />
+            <span class="tooltip" :name="type">{{ type }}</span>
           </div>
         </div>
       </div>
@@ -66,8 +66,7 @@ export default {
       this.isClicked = false
     },
     showModal(pic) {
-      console.log(1, pic)
-      mutations.setModalImage(pic)
+      mutations.setModalImage(require('@/assets/images/projects/' + pic))
       mutations.showModal()
     },
     closeModal () {
@@ -153,6 +152,14 @@ export default {
           width: 100%;
           height: 100%;
           background-color: rgba(1, 1, 1, .5);
+          transition: all .3s ease;
+        }
+        &:hover:before {
+          transition: all .3s ease;
+          background-color: rgba(1, 1, 1, .7);
+        }
+        &:hover:after {
+          background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='192.904' height='192.904'%3E%3Crect width='100%25' height='100%25' fill='none'/%3E%3Cg class='currentLayer'%3E%3Cg fill='%23fff'%3E%3Cpath d='M190.707 180.101l-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 005.303 2.197 7.498 7.498 0 005.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z'/%3E%3Cpath d='M118.035 73.689H88.69V44.345c0-4.142-3.357-7.5-7.5-7.5s-7.5 3.358-7.5 7.5V73.69H44.346a7.5 7.5 0 00-7.5 7.5 7.5 7.5 0 007.5 7.5H73.69v29.346c0 4.142 3.357 7.5 7.5 7.5s7.5-3.358 7.5-7.5V88.689h29.345a7.5 7.5 0 007.5-7.5 7.5 7.5 0 00-7.5-7.5z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
         &:after {
           content: '';
@@ -165,7 +172,7 @@ export default {
           background-size: 3em;
           background-position: center;
           background-repeat: no-repeat;
-          background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='192.904' height='192.904'%3E%3Crect width='100%25' height='100%25' fill='none'/%3E%3Cg class='currentLayer'%3E%3Cg fill='%23fff'%3E%3Cpath d='M190.707 180.101l-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 005.303 2.197 7.498 7.498 0 005.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z'/%3E%3Cpath d='M118.035 73.689H88.69V44.345c0-4.142-3.357-7.5-7.5-7.5s-7.5 3.358-7.5 7.5V73.69H44.346a7.5 7.5 0 00-7.5 7.5 7.5 7.5 0 007.5 7.5H73.69v29.346c0 4.142 3.357 7.5 7.5 7.5s7.5-3.358 7.5-7.5V88.689h29.345a7.5 7.5 0 007.5-7.5 7.5 7.5 0 00-7.5-7.5z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+          background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='192.904' height='192.904'%3E%3Crect width='100%25' height='100%25' fill='none'/%3E%3Cg class='currentLayer'%3E%3Cg fill='lightgray'%3E%3Cpath d='M190.707 180.101l-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 005.303 2.197 7.498 7.498 0 005.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z'/%3E%3Cpath d='M118.035 73.689H88.69V44.345c0-4.142-3.357-7.5-7.5-7.5s-7.5 3.358-7.5 7.5V73.69H44.346a7.5 7.5 0 00-7.5 7.5 7.5 7.5 0 007.5 7.5H73.69v29.346c0 4.142 3.357 7.5 7.5 7.5s7.5-3.358 7.5-7.5V88.689h29.345a7.5 7.5 0 007.5-7.5 7.5 7.5 0 00-7.5-7.5z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
       }
      }

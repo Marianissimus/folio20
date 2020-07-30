@@ -1,6 +1,6 @@
 <template>
   <div class="sectionTitle">
-    <span class="sectionTitleText">
+    <span class="sectionTitleText" :style="{fontSize: fontSize + 'px'}">
       {{ title }}
     </span>
   </div>
@@ -8,23 +8,43 @@
 
 <script>
 export default {
-  props: ['title']
+  props: ['title', 'fontSize']
 }
 </script>
 
 <style lang="scss">
 .sectionTitle {
-  width: 350px;
-  margin: 80px auto 0 auto;
-  text-align: center;
-  @include smallBorder;
-  text-decoration: none;
-  font-family: $fontSecondary;
-  padding: 20px;
+  max-width: 950px;
   overflow: hidden;
-  text-align: center;
+  margin: 80px auto;
   & .sectionTitleText {
-    font-size: 30px;
+    font-family: $fontTernary;
+    font-size: 4rem;
+    font-weight: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    padding: 10px;
+    @include shadowNeu;
+    &:before, &:after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 50%;
+    }
+    &:before{
+      background-color: red;
+      background: linear-gradient(to right, rgba(240,240,240,0), #fff);
+      margin-right: 4vh;
+      margin-left: 1em;
+    }
+    &:after{
+      background-color: red;
+      background: linear-gradient(to left, rgba(240,240,240,0), #fff);
+      margin-left: 4vh;
+      margin-right: 1em;
+    }
   }
 }
 </style>

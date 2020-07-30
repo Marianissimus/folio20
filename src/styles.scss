@@ -78,6 +78,19 @@ background-image: linear-gradient( 89.9deg,  rgba(208,246,255,1) 0.1%, rgba(255,
 }
 
 
+section {
+  min-height: 100vh;
+}
+
+#contact {
+  min-height: auto;
+  margin-bottom: 87px;
+}
+
+#stack {
+  min-height: auto;
+}
+
 button {
   border: none;
   outline: none;
@@ -86,38 +99,6 @@ button {
 }
 
 // Projects view
-
-.heading {
-  padding-top: 2em;
-  text-align: center;
-  max-width: 90vw;
-  margin: 0 auto;
-}
-
-.tablink {
-  color: white;
-  font-family: $fontSecondary;
-  font-weight: 100;
-  font-size: 1rem;
-  padding: 1rem;
-  margin-right: 2px;
-  background-color: transparent;
-  font-size: 1.5em;
-  transition: background-color .5s ease-in-out;
-  box-shadow:
-  2px 2px 4px 0 rgba(0, 0, 0, 0.1),
-  2px -2px 4px 0 rgba(255, 255, 255, 0.1);
-  &:last-of-type {
-    margin-right: 0;
-  }
-}
-
-.active {
-  transition: background-color .5s ease-in-out;
-  background-color: black;
-  color: white;
-  box-shadow: none;
-}
 
 // Projects component - for both home view and projects view
 
@@ -167,7 +148,7 @@ button {
   text-align: center;
   margin: 0 auto;
   & div {
-    padding: 2rem;
+    padding: 3rem;
     font-family: $fontSecondary;
     font-size: 3rem;
     font-weight: 100;

@@ -45,7 +45,7 @@ export default {
   font-family: $fontSecondary;
   padding: 20px;
   overflow: hidden;
-  background-color: transparent;
+  background-color: rgba(1, 1, 1, .5);
   transition: background-color 5s ease-in-out;
 }
 

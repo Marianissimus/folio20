@@ -1,5 +1,5 @@
 <template>
-  <div class="logo" ref="logo" :style="{width: this.width + 'px'}">
+  <div ref="logo" :style="{width: this.width + 'px'}" :class="['logo', isLogoAnimating ? 'center-logo' : '']">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
       <path
         d="M369.403 43.939l-113.404 113.4-113.402-113.4H0v424.122h151.385V266.815l93.987 93.987 10.627 10.586.122-.122.021.021 104.473-104.473v201.247H512V43.939z"/></svg>
@@ -38,6 +38,12 @@ export default {
   }
 }
 
+.center-logo {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .logo-icon-animation {
   & path {
     animation: animate-logo 1.6s linear forwards;
@@ -47,7 +53,7 @@ export default {
 .logo-reverse-animation {
   & path {
     animation: reverse-logo .3s linear forwards;
-    animation-delay: 1.9s;
+    animation-delay: .4s;
   }
 }
 

@@ -11,6 +11,7 @@ Vue.directive('scrollanimation', ScrollAnimation)
 Vue.directive('click-outside', clickOutside)
 
 Vue.config.productionTip = false
+
 Vue.mixin({
   computed: {
     bgColor() {
@@ -21,6 +22,12 @@ Vue.mixin({
     },
     modalImage () {
       return store.modalImage
+    },
+    isLogoAnimating () {
+      return store.isLogoAnimating
+    },
+    idInHomeView () {
+      return store.idInHomeView
     }
   }
 })
