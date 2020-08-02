@@ -99,6 +99,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    @media only screen and (min-width: 1000px) {
+      max-width: 900px;
+    }
   }
 
   .stack-links {

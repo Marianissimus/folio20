@@ -86,8 +86,10 @@ export default {
 /**** PROJECT CARD FOR BOTH Projects View and Home View ***/
 .h-card-container {
   position: relative;
-  max-width: 900px;
   max-width: 90vw;
+  @media only screen and (min-width: 1000px) {
+    max-width: 900px;
+  }
   height: auto;
   // ANIMATIONS
   // animation classes from v-scrollanimation
