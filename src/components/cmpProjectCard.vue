@@ -8,7 +8,7 @@
         <div class="titleContainer">
           <h1 v-scrollanimation class="title">{{ card.name }}</h1>
           <div class="img-container" @click="showModal(card.pic)">
-            <img :src="require('@/assets/images/projects/' + card.pic)" class="img-container"
+            <img :src="require('@/assets/images/projects/' + cardThumb)" class="img-container"
             v-scrollanimation
             />
           </div>
@@ -51,6 +51,12 @@ export default {
   data () {
     return {
       isClicked: false
+    }
+  },
+  computed: {
+    cardThumb () {
+      // the thumb format is "imagename_thumb.ext"; a thumb is 120x100px
+      return this.card.pic.split('.')[0] + '_thumb.' + this.card.pic.split('.')[1]
     }
   },
   methods: {

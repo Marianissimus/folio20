@@ -56,7 +56,7 @@ export default {
       border-radius: 50%;
       & span {
         position:absolute;
-        top: 50%;
+        top: 51%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 1.5em !important;

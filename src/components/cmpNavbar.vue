@@ -1,5 +1,6 @@
 <template>
  <transition
+    v-if="!isLogoAnimating"
     appear
     appear-class="nav-appear-class"
     appear-to-class="nav-appear-to-class"
@@ -13,7 +14,7 @@
           appear-to-class="link-appear-to-class"
           appear-active-class="link-appear-active-class"
         >
-          <span @click="scrollTo('top')" :style="{'transition-delay': '700ms'}">Marian Vidoe</span>
+          <span @click="scrollTo('top')" :style="{'transition-delay': '400ms'}">Marian Vidoe</span>
         </transition>
       </div>
       <div class="nav-links">
@@ -62,7 +63,7 @@ export default {
           text: 'Work'
         },
         {
-          element: 'contactForm',
+          element: 'contact',
           text: 'Contact'
         }
       ],

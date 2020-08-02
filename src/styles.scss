@@ -4,22 +4,9 @@
 
 /*** GLOBAL VARIABLES ***/
 
-$blue: #201FC8;
-$white: #FFF;
-$red: red;
-$linkcolor: orange;
-$padding: 3rem;
 $fontPrimary: 'Raleway', sans-serif;
 $fontSecondary: 'Nunito', sans-serif;
 $fontTernary: 'Roboto', sans-serif;
-
-@mixin bgWhite {
-background-image: linear-gradient( 89.9deg,  rgba(208,246,255,1) 0.1%, rgba(255,237,237,1) 47.9%, rgba(255,255,231,1) 100.2% );
-}
-
-@mixin bgBlack {
-  background-image: radial-gradient( circle farthest-corner at -4% -12.9%,  rgba(74,98,110,1) 0.3%, rgba(30,33,48,1) 90.2% );
-}
 
 @mixin shadowNeu {
   border-radius: 3px;
@@ -53,10 +40,6 @@ background-image: linear-gradient( 89.9deg,  rgba(208,246,255,1) 0.1%, rgba(255,
 
 // sections //
 
-.bgWhite {
-  @include bgWhite;
-}
-
 .bgBlue {
   background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(120,50,255,1) 0%, rgba(50,150,250,1) 91% );
 }
@@ -70,7 +53,8 @@ background-image: linear-gradient( 89.9deg,  rgba(208,246,255,1) 0.1%, rgba(255,
 }
 
 .bgPurple {
-  background-image: radial-gradient( circle farthest-corner at 0% 20%,  rgba(117,0,149,1) 0%, rgba(88,0,112,0.76) 90% );
+  background-image: linear-gradient(to top, #5f72bd 0%, #9b23ea 100%);
+  background-image: linear-gradient(290deg, #3b2b73 55%, #6f2f93, #6f2f93);
 }
 
 .bgMoreBlue {

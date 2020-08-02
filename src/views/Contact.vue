@@ -1,6 +1,6 @@
 <template>
   <section id="contact">
-    <section-header :title="'Contact'"/>
+    <section-header :title="'Contact me'"/>
     <form novalidate="true"
       id="contactForm"
       @submit.prevent="onSubmit"
@@ -55,9 +55,6 @@ export default {
   components: {
     'section-header': cmpSectionHeader,
     'contact-icons': cmpContactIcons
-  },
-  created () {
-    console.log(new Date().toString())
   },
   data () {
     return {

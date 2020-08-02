@@ -29,7 +29,7 @@ export default {
   padding: 20px;
   margin: 0 auto;
    & path {
-    fill: transparent;
+    fill: white;
     stroke-width: 10;
     stroke: #CCC;
     stroke-dasharray: 2500;
@@ -53,7 +53,6 @@ export default {
 .logo-reverse-animation {
   & path {
     animation: reverse-logo .3s linear forwards;
-    animation-delay: .4s;
   }
 }
 

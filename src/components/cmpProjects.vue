@@ -14,7 +14,7 @@
     <!-- navigation button from Home to More Projects view -->
     <div>
       <btn-w-icon v-if="from === 'home'"
-      :beforeIcon="'arrow-right'" :afterIcon="'arrow-right'" :text="'More Projects'" :direction="'right'" @click.native="goToProjects()" style="margin-top: 70px"/>
+      :beforeIcon="'arrow-right'" :afterIcon="'arrow-right'" :text="'More Projects'" :direction="'right'" @click.native="goToProjects()" style="margin-top: 70px" id="MoreProjects"/>
       <btn-w-icon v-if="from === 'projects'"
       :beforeIcon="'arrow-left'" :afterIcon="'arrow-left'" :text="'Return to Main'" :direction="'right'" @click.native="goHome()" style="margin-bottom: 60px"/>
     </div>
@@ -25,6 +25,7 @@
 <script>
 import ProjectCard from '@/components/cmpProjectCard'
 import cmpSectionHeader from '@/components/cmpSectionHeader'
+import { mutations } from "@/store"
 
 export default {
   props: {
@@ -76,7 +77,8 @@ export default {
       })
     },
     goHome () {
-      this.$router.replace('/')
+      mutations.setGoToIdInHomeView('MoreProjects')
+      this.$router.push('/')
     }
   }
 }

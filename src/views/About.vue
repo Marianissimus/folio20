@@ -51,8 +51,7 @@ export default {
     }
   },
   mounted () {
-    // reset timer to 2000 or whatever is right after testing
-    setTimeout (() => mutations.setLogoAnimating(false), 200)
+    setTimeout (() => mutations.setLogoAnimating(false), 2000)
   },
   methods: {
     scrollTo (where) {
@@ -88,8 +87,8 @@ export default {
   }
 
   .landing-enter {
-    opacity: .5;
     transform: translateY(100px);
+    opacity: 0;
     transition: all .5s ease-in-out;
   }
 

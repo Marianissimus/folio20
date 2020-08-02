@@ -1,7 +1,7 @@
 import Vue from "vue";
 
 export const store = Vue.observable({
-  bgColor: 'bgBlue',
+  bgColor: 'bgMoreBlue',
   isModalVisible: false,
   modalImage: null,
   isLogoAnimating: true,

@@ -56,8 +56,8 @@ export default {
   },
   updated () {
     if (this.idInHomeView) {
-      // smooth scroll to id if click on link from another view
-      document.getElementById(this.idInHomeView).scrollIntoView({behavior: "smooth"})
+      // scroll to id if click on link from another view
+      document.getElementById(this.idInHomeView).scrollIntoView()
       mutations.setGoToIdInHomeView(null)
     }
   },
