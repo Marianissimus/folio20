@@ -15,7 +15,7 @@
               I create web apps and sites that tell stories and solve problems.
             </li>
             <li>
-              I make them with fast and modern <span class="about-link" @click="scrollTo('stack')">technologies</span> such as Vue.js, JavaScript, Bootstrap and more.
+              I make them with fast and modern <span class="about-link" @click="scrollTo('stack')">technologies</span> such as Vue.js, JavaScript, Bootstrap and <span style="font-size: inherit" @click="$router.push('/login')">more</span>.
             </li>
             <li>
               Also, as a former copywriter, I am a creative programmer that likes to <span class="about-link" @click="scrollTo('contact')">communicate</span>.
