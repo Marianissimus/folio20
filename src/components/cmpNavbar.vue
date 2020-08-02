@@ -144,6 +144,9 @@ export default {
 
 .nav-links, .nav-name {
   flex: 1 0 20%;
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 }
 
 .nav-links {

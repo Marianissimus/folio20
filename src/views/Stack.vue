@@ -92,8 +92,7 @@ export default {
   .stack-container {
     @include smallBorder;
     @include shadowSmall;
-    width: 90vw;
-    max-width: 900px;
+    max-width: 90vw;
     height: auto;
     margin: 90px auto 0 auto;
     text-align: center;
@@ -104,7 +103,7 @@ export default {
 
   .stack-links {
     display: flex;
-    flex: 1 0 300px;
+    flex: 1 0 100px;
     justify-content: flex-start;
     align-items: center;
     overflow: hidden;
@@ -136,9 +135,18 @@ export default {
     display: inline-block;
     text-align: center;
     margin: 12px 5px 2px 5px;
+    @media only screen and (max-width: 600px) {
+      min-width: 50px;
+      line-height: 100px;
+      max-height: 60px;
+    }
     & svg {
       width: 50px;
       height: 50px;
+      @media only screen and (max-width: 600px) {
+        width: 40px;
+        height: 40px;
+      }
     }
   }
 

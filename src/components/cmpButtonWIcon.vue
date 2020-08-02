@@ -47,6 +47,9 @@ export default {
   overflow: hidden;
   background-color: rgba(1, 1, 1, .5);
   transition: background-color 5s ease-in-out;
+  @media only screen and (max-width: 600px) {
+    max-width: 300px;
+  }
 }
 
 .icon-styles {
@@ -65,6 +68,9 @@ export default {
     font-size: 30px;
     flex: 0 0 auto;
     transform: translateX(20px);
+    @media only screen and (max-width: 600px) {
+      font-size: 25px;
+    }
   }
   & .first-icon {
     flex: 0 0 40px;

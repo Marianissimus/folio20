@@ -167,6 +167,10 @@ export default {
       padding: 3px 0 5px 7px;
       font-family: $fontSecondary;
       font-size: 1em;
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+        margin-top: 1rem;
+      }
     }
     & .error {
       display: inline-block;

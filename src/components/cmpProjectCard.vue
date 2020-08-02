@@ -87,6 +87,7 @@ export default {
 .h-card-container {
   position: relative;
   max-width: 900px;
+  max-width: 90vw;
   height: auto;
   // ANIMATIONS
   // animation classes from v-scrollanimation
@@ -119,6 +120,9 @@ export default {
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+      @media only screen and (max-width: 600px) {
+        flex-direction: column;
+      }
       & .title {
         display: inline-block;
         white-space: wrap;
@@ -128,6 +132,10 @@ export default {
         padding-right: 10px;
         width: 100%;
         text-overflow: ellipsis;
+        @media only screen and (max-width: 600px) {
+          text-align: center;
+          margin-bottom: 1.3rem;
+        }
         // animation from v-scrollanimation
         &.before-enter {
           transform: scale(.7);
@@ -186,6 +194,9 @@ export default {
       flex: 1 0 auto;
       display: flex;
       align-items: center;
+      @media only screen and (max-width: 600px) {
+        margin-top: 1.3rem;
+      }
         & p {
           @include fontBasic;
         }

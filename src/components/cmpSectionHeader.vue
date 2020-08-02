@@ -26,6 +26,9 @@ export default {
     align-items: center;
     white-space: nowrap;
     padding: 10px;
+    @media only screen and (max-width: 600px) {
+      font-size: 3rem;
+    }
     @include shadowNeu;
     &:before, &:after {
       content: '';
@@ -38,12 +41,18 @@ export default {
       background: linear-gradient(to right, rgba(240,240,240,0), #fff);
       margin-right: 4vh;
       margin-left: 1em;
+      @media only screen and (max-width: 600px) {
+        display: none
+      }
     }
     &:after{
       background-color: red;
       background: linear-gradient(to left, rgba(240,240,240,0), #fff);
       margin-left: 4vh;
       margin-right: 1em;
+      @media only screen and (max-width: 600px) {
+        display: none
+      }
     }
   }
 }

@@ -101,6 +101,7 @@ export default {
     justify-content: center;
     align-items: space-around;
     padding: 2rem;
+    overflow: hidden;
     @media only screen and (min-width: 1050px) {
       padding: 1em;
     }
@@ -118,6 +119,9 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        @media only screen and (max-width: 850px) {
+          margin: 1rem;
+        }
         & button {
           color: white;
           font-family: $fontTernary;
@@ -158,6 +162,9 @@ export default {
       line-height: 4rem;
       font-family: $fontPrimary;
       padding: 1rem 0;
+      @media only screen and (max-width: 600px) {
+        font-size: 3rem;
+      }
     }
     & h3 {
       font-size: 1.2rem;
