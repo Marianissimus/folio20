@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Page404 from '../views/Page404.vue'
 import Login from '../views/Login.vue'
 import Edit from '../views/Edit.vue'
+import firebase from 'firebase/app'
 // import { store } from "@/store"
 
 Vue.use(VueRouter)
@@ -28,7 +29,10 @@ Vue.use(VueRouter)
     {
       path: '/edit',
       name: 'Edit',
-      component: Edit
+      component: Edit,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/about',
@@ -47,7 +51,6 @@ Vue.use(VueRouter)
     }
   ]
 
-
 const router = new VueRouter({
   mode: 'history',
   routes,
@@ -57,6 +60,16 @@ const router = new VueRouter({
         selector: to.hash
       }
     }
+  }
+})
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+  const isAuthenticated = firebase.auth().currentUser
+  if (requiresAuth && !isAuthenticated) {
+    next('/login')
+  } else {
+    next()
   }
 })
 
