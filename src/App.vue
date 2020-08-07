@@ -6,7 +6,7 @@
         v-show="isModalVisible"
       />
     </transition>
-    <transition name="bounce">
+    <transition name="fade">
       <router-view/>
     </transition>
   </div>

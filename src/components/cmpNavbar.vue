@@ -6,7 +6,7 @@
     appear-to-class="nav-appear-to-class"
     >
     <div id="nav">
-      <animated-logo :width="30" :direction="'reverse'"/>
+      <animated-logo :width="30" :direction="'reverse'" @click.native="scrollTo('top')" style="cursor: pointer;"/>
       <div class="nav-name nav-element">
         <transition
           appear

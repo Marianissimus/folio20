@@ -171,6 +171,7 @@ export default {
       this.editing = this.getEmptyProject()
     },
     getEmptyProject () {
+      this.isEditingExisting = false
       return {
         name: null,
         urls: {
@@ -199,7 +200,6 @@ export default {
       })
     },
     deleteEmail (date) {
-      console.log(date)
       db.collection('contactforms').doc(date).delete().then(() => {
           console.log("Document successfully deleted!")
           this.getEmails()
@@ -217,9 +217,6 @@ export default {
         mutations.setIsUserLoggedIn(false)
         this.$router.replace('/')
       })
-    },
-    timeConverter(UNIX_timestamp){
-      return UNIX_timestamp.toDate().toDateString() + ' at ' +  UNIX_timestamp.toDate().toLocaleTimeString()
     }
   }
 }
