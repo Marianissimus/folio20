@@ -4,8 +4,8 @@ import Home from '../views/Home.vue'
 import Page404 from '../views/Page404.vue'
 import Login from '../views/Login.vue'
 import Edit from '../views/Edit.vue'
+import Work from '../views/Work.vue'
 import firebase from 'firebase/app'
-// import { store } from "@/store"
 
 Vue.use(VueRouter)
 
@@ -22,6 +22,11 @@ Vue.use(VueRouter)
       component: Home
     },
     {
+      path: '/projects',
+      name: 'Projects',
+      component: Work
+    },
+    {
       path: '/login',
       name: 'Login',
       component: Login
@@ -33,21 +38,6 @@ Vue.use(VueRouter)
       meta: {
         requiresAuth: true
       }
-    },
-    {
-      path: '/about',
-      name: 'About',
-      component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-    },
-    {
-      path: '/contact',
-      name: 'Contact',
-      component: () => import('../views/Contact.vue')
-    },
-    {
-      path: '/projects',
-      name: 'Projects',
-      component: () => import('../views/Work.vue')
     }
   ]
 
@@ -56,9 +46,12 @@ const router = new VueRouter({
   routes,
   scrollBehavior(to) {
     if (to.hash) {
-      return {
-        selector: to.hash
-      }
+      return window.scrollTo({
+        top: document.querySelector(to.hash).offsetTop,
+        behavior: 'smooth'
+      })
+    } else {
+      return { x: 0, y: 0 }
     }
   }
 })

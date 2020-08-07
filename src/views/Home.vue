@@ -1,14 +1,17 @@
 <template>
-  <div class='home'>
-    <About />
-    <transition name="landing" v-if="!isLogoAnimating">
+  <div class="big-animation" v-if="isLogoAnimating">
+    <animated-logo :direction="'forwards'"/>
+  </div>
+  <div class='home' v-else>
+    <About/>
+    <transition name="landing">
       <Projects v-if="projects" :homeFilter="'featured'" :projects="projects" :from="'home'">
       </Projects>
     </transition>
-    <transition name="landing" v-if="!isLogoAnimating">
+    <transition name="landing">
       <Stack />
     </transition>
-    <transition name="landing" v-if="!isLogoAnimating">
+    <transition name="landing">
       <Contact />
     </transition>
     <back-to-top-btn />
@@ -23,6 +26,7 @@ import Stack from '@/views/Stack.vue'
 import cmpBackToTopBtn from '@/components/cmpBackToTopBtn'
 import { db } from '@/firebaseInit'
 import { mutations } from "@/store"
+import AnimatedLogo from '@/components/cmpAnimatedLogo'
 
 export default {
   name: 'Home',
@@ -31,7 +35,8 @@ export default {
     About: About,
     Contact: Contact,
     Stack: Stack,
-    'back-to-top-btn': cmpBackToTopBtn
+    'back-to-top-btn': cmpBackToTopBtn,
+    'animated-logo': AnimatedLogo,
   },
   data () {
     return {
@@ -53,6 +58,9 @@ export default {
     })
     .catch(error => console.log("Error getting document:", error) )
     window.addEventListener('unload', this.scrollToTop)
+  },
+  mounted () {
+    setTimeout (() => mutations.setLogoAnimating(false), 2000)
   },
   updated () {
     if (this.idInHomeView) {

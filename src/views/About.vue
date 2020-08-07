@@ -1,7 +1,6 @@
 <template>
-  <section :class="['about-view', isLogoAnimating ? 'about-animating' :  '']" id="about">
-    <animated-logo v-if="isLogoAnimating" :direction="'forwards'"/>
-    <transition name="landing" v-else appear>
+  <section class='about-view' id="about">
+    <transition name="landing" appear>
       <div id="profile">
         <div class="profile-text">
           <h3>
@@ -35,23 +34,16 @@
 </template>
 
 <script>
-import AnimatedLogo from '@/components/cmpAnimatedLogo'
-import Avatar from '@/components/cmpAvatar'
-import { mutations } from '@/store'
 
+import Avatar from '@/components/cmpAvatar'
 export default {
   components: {
-    'animated-logo': AnimatedLogo,
     'avatar': Avatar
   },
   data () {
     return {
-      animating: true,
       isImageHovered: false
     }
-  },
-  mounted () {
-    setTimeout (() => mutations.setLogoAnimating(false), 2000)
   },
   methods: {
     scrollTo (where) {
@@ -67,12 +59,6 @@ export default {
     margin: 3em auto 0 auto;
     width: 90vw;
     max-width: 900px;
-  }
-
-  .about-animating {
-    margin: 0 auto;
-    width: 100vw;
-    height: 100vh;
   }
 
   .about-link {
