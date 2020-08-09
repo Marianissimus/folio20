@@ -11,13 +11,6 @@
       :class="[ 'projects-container', from === 'home' ? 'home-projects' : 'projects-projects' ]">
       <project-card v-for="(project, index) in viewProjects" :key="project.name" :card="project" :from="from" :index="index"/>
     </transition-group>
-    <!-- navigation button from Home to More Projects view -->
-    <div>
-      <btn-w-icon v-if="from === 'home'"
-      :beforeIcon="'arrow-right'" :afterIcon="'arrow-right'" :text="'More Projects'" :direction="'right'" @click.native="goToProjects()" style="margin-top: 70px"/>
-      <btn-w-icon v-if="from === 'projects'"
-      :beforeIcon="'arrow-left'" :afterIcon="'arrow-left'" :text="'Return to Main'" :direction="'right'" @click.native="goHome()" style="margin-bottom: 60px"/>
-    </div>
     <!-- end of projects component -->
   </section>
 </template>
@@ -25,7 +18,6 @@
 <script>
 import ProjectCard from '@/components/cmpProjectCard'
 import cmpSectionHeader from '@/components/cmpSectionHeader'
-import { mutations } from "@/store"
 
 export default {
   props: {
@@ -68,17 +60,6 @@ export default {
         this.viewProjects = this.projects.filter(el => el.tags.includes(ev))
       }
       this.$emit('projectsUpdated', this.viewProjects.length)
-    },
-    goToProjects () {
-      this.$router.replace('/projects')
-      window.scrollTo({
-        top: 0,
-        left: 0
-      })
-    },
-    goHome () {
-      mutations.setGoToIdInHomeView('stack')
-      this.$router.push('/')
     }
   }
 }

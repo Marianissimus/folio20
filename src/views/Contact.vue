@@ -32,12 +32,12 @@
       <transition name="fade" v-if="confirmSent">
       <div class="form-row confirm-message">
         Thank you! Your message was successfully sent!
-        <button class="confirm-btn" @click.prevent="clearConfirmation">OK</button>
+        <button class="confirm-btn" @click.prevent="clearConfirmation" aria-label="Confirm message sent">OK</button>
       </div>
       </transition>
       <div class="form-row form-buttons">
-        <button @click.prevent="onCancel" type="reset">Cancel</button>
-        <button type="submit">Submit</button>
+        <button @click.prevent="onCancel" type="reset" aria-label="Reset form">Cancel</button>
+        <button type="submit" aria-label="Submit form">Submit</button>
       </div>
     </form>
     <contact-icons />
@@ -152,6 +152,9 @@ export default {
   font-family: $fontSecondary;
   font-size: 1.2em;
   padding: 2rem 0;
+  @media only screen and (max-width: 600px) {
+    margin-top: -2em !important;
+  }
   & .form-row {
     padding: 1em;
     display: block;

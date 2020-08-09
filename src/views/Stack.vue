@@ -2,14 +2,14 @@
   <section id="stack">
     <section-header :title="'Stack'" />
     <div :class="['stack-container', bgColor]">
-      <button class="arrow arrow-left" @click="scrollStack('left')"></button>
+      <button class="arrow arrow-left" @click="scrollStack('left')" aria-label="Scroll left"></button>
       <div class="stack-links" ref="stacklinks">
         <figure v-for="item in stack" :key="item.name">
           <div v-html="item.icon" class="stack-icon"></div>
           <figcaption>{{ item.name }}</figcaption>
         </figure>
       </div>
-      <button class="arrow arrow-right" @click="scrollStack('right')"></button>
+      <button class="arrow arrow-right" @click="scrollStack('right')" aria-label="Scroll right"></button>
     </div>
   </section>
 </template>

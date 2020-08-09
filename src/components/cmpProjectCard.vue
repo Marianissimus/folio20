@@ -9,7 +9,7 @@
           <h1 v-scrollanimation class="title">{{ card.name }}</h1>
           <div class="img-container" @click="showModal(card.pic)">
             <img :src="require('@/assets/images/projects/' + cardThumb)" class="img-container"
-            v-scrollanimation
+            v-scrollanimation alt="project image thumb"
             />
           </div>
         </div>
@@ -136,7 +136,8 @@ export default {
         text-overflow: ellipsis;
         @media only screen and (max-width: 600px) {
           text-align: center;
-          margin-bottom: 1.3rem;
+          font-size: 2.5rem;
+          margin-bottom: 2rem;
         }
         // animation from v-scrollanimation
         &.before-enter {
@@ -197,7 +198,7 @@ export default {
       display: flex;
       align-items: center;
       @media only screen and (max-width: 600px) {
-        margin-top: 1.3rem;
+        margin-top: 2.3rem;
       }
         & p {
           @include fontBasic;
@@ -218,6 +219,9 @@ export default {
       flex-direction: row;
       justify-content: space-around;
       width: 100%;
+      @media only screen and (max-width: 600px) {
+        flex-basis: 120px;
+      }
      }
      & .link {
         margin: 0;

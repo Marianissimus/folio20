@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <button id="back-to-top" @click="scrollToTop" v-show="showButton">
+    <button id="back-to-top" @click="scrollToTop" v-show="showButton" aria-label="Back To Top">
       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
       width="30" height="30"
       viewBox="0 0 171 171"

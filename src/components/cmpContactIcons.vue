@@ -24,7 +24,7 @@
     </figure>
     </a>
 
-
+<!-- Maybe not right now
      <a href="https://www.codewars.com/users/Marianissimus">
       <figure>
        <span id="codewars">
@@ -32,7 +32,7 @@
       </span>
       <figcaption>Codewars</figcaption>
       </figure>
-    </a>
+    </a> -->
 
     <a href="https://codepen.io/marianissimus/">
       <figure>

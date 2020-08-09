@@ -1,35 +1,33 @@
 <template>
   <section class='about-view' id="about">
-    <transition name="landing" appear>
-      <div id="profile">
-        <div class="profile-text">
-          <h3>
-            Hi, I’m Marian, a
-          </h3>
-          <h1>
-            Front End Developer
-          </h1>
-          <ul class="profile-list">
-            <li>
-              I create web apps and sites that tell stories and solve problems.
-            </li>
-            <li>
-              I make them with fast and modern <span class="about-link" @click="scrollTo('stack')">technologies</span> such as Vue.js, JavaScript, Bootstrap and <span style="font-size: inherit" @click="$router.push('/login')">more</span>.
-            </li>
-            <li>
-              Also, as a former copywriter, I am a creative programmer that likes to <span class="about-link" @click="scrollTo('contact')">communicate</span>.
-            </li>
-          </ul>
-        </div>
-        <div class="prof-img-container">
-          <div class="profile-buttons">
-            <button @click="scrollTo('contactForm')">Contact me!</button>
-            <button @click="scrollTo('homeprojects')">See Work</button>
-          </div>
-          <avatar class="profile-picture" :fill="bgColor"/>
-        </div>
+    <div id="profile">
+      <div class="profile-text">
+        <h3>
+          Hi, I’m Marian, a
+        </h3>
+        <h1>
+          Front End Developer
+        </h1>
+        <ul class="profile-list">
+          <li>
+            I create web apps and sites that tell stories and solve problems.
+          </li>
+          <li>
+            I make them with fast and modern <span class="about-link" @click="scrollTo('stack')">technologies</span> such as Vue.js, JavaScript, Bootstrap and <span style="font-size: inherit" @click="$router.push('/login')">more</span>.
+          </li>
+          <li>
+            Also, as a former copywriter, I am a creative programmer that likes to <span class="about-link" @click="scrollTo('contact')">communicate</span>.
+          </li>
+        </ul>
       </div>
-    </transition>
+      <div class="prof-img-container">
+        <div class="profile-buttons">
+          <button @click="scrollTo('contactForm')" aria-label="Contact me">Contact me!</button>
+          <button @click="scrollTo('homeprojects')" aria-label="Go to work">See Work</button>
+        </div>
+        <avatar class="profile-picture" :fill="bgColor"/>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -65,17 +63,6 @@ export default {
     font: inherit;
     text-decoration: underline;
     cursor: pointer;
-  }
-
-  .landing-enter-active{
-    opacity: 1;
-    transition: all .5s ease-in-out;
-  }
-
-  .landing-enter {
-    transform: translateY(100px);
-    opacity: 0;
-    transition: all .5s ease-in-out;
   }
 
   #profile {
@@ -149,7 +136,7 @@ export default {
       font-family: $fontPrimary;
       padding: 1rem 0;
       @media only screen and (max-width: 600px) {
-        font-size: 3rem;
+        font-size: 2.5rem;
       }
     }
     & h3 {
@@ -163,6 +150,10 @@ export default {
       font-family: $fontSecondary;
       font-weight: 200;
       padding-bottom: 1rem;
+      @media only screen and (max-width: 600px) {
+        line-height: 1.8rem;
+        list-style-type: disc;
+      }
       & li {
         font-size: 1.2rem;
       }

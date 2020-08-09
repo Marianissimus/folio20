@@ -1,6 +1,6 @@
 <template>
   <div class="modal">
-    <button class="close-button" @click="close">
+    <button class="close-button" @click="close" aria-label="Close modal">
      <span>X</span>
     </button>
     <div v-if="modalImage" class="modal-image" :style="{ backgroundImage: 'url(' + modalImage + ')' }">

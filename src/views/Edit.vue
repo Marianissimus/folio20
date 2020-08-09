@@ -1,7 +1,7 @@
 <template>
   <section class="projects-editor">
-    <div class="form-row">
-      <button class="edit-buttons" @click="logOut">Log out</button>
+    <div class="form-row" style="text-align: right">
+      <button class="edit-buttons" @click="logOut" aria-label="Log out">Log out</button>
     </div>
     <section-header :title="'Received contact forms'" style="margin-top: 80px;"/>
       <div id="emails" class="form">
@@ -10,7 +10,7 @@
           <li v-for="(item, index) in contactForms" :key="index" class="email-row">
             <p>
               <span v-if="item.date">Date is: {{ item.date.toLocaleString() }} </span>
-              <button class="edit-buttons" @click="deleteEmail(item.date)">X</button>
+              <button class="edit-buttons" @click="deleteEmail(item.date)" aria-label="Delete email">X</button>
             </p>
             <p>Sender is: {{ item.name }} </p>
             <p>Email is: {{ item.email }} </p>
@@ -23,7 +23,7 @@
     <div class="edit-content form">
       <form id="edit-form" @submit.prevent="saveProject">
         <section-header :title="'Add new'" :fontSize="40" style="margin-bottom: 0; width: 150px;"/>
-        <button @click="addnew" class="edit-buttons">Add new via code</button>
+        <button @click="addnew" class="edit-buttons" aria-label="Add via console">Add new via code</button>
         <fieldset>
           <div class="form-row">
             <label for="name">Name</label>
@@ -62,9 +62,9 @@
             <textarea name="description" id="description" rows="6" v-model="editing.description" />
           </div>
           <div class="form-row form-buttons">
-            <button type="submit" v-if="isEditingExisting">Save</button>
-            <button type="submit" v-else>Add</button>
-            <button @click.prevent="cancel">Cancel</button>
+            <button type="submit" v-if="isEditingExisting" aria-label="Save project">Save</button>
+            <button type="submit" v-else aria-label="Add project">Add</button>
+            <button @click.prevent="cancel" aria-label="Cancel project">Cancel</button>
           </div>
         </fieldset>
       </form>
@@ -72,9 +72,9 @@
         <section-header :title="'Edit existing'" :fontSize="40" style="margin-bottom: 0"/>
         <ul class="projects-list">
           <li v-for="project in projects" :key="project.name">
-            <button @click="edit(project)" class="edit-buttons">{{ project.name }}</button>
+            <button @click="edit(project)" class="edit-buttons" aria-label="Edit project">{{ project.name }}</button>
             <span> </span>
-            <button @click="remove(project.name)" class="edit-buttons">X</button>
+            <button @click="remove(project.name)" class="edit-buttons" aria-label="Remove project">X</button>
           </li>
         </ul>
       </div>

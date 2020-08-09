@@ -11,11 +11,13 @@
       <button class="arrow arrow-right hide-big-screen" @click="scrollNavbar('right')"></button>
     </div>
     <projects-comp :projects="projects" ref="projectsComp" :from="'projects'" :filter="currentFilter" />
+    <btn-w-icon :beforeIcon="'arrow-left'" :afterIcon="'arrow-left'" :text="'Return to Main'" :direction="'right'" @click.native="goHome()" style="margin-bottom: 60px" aria-label="Go to Main Page"/>
   </div>
 </template>
 
 <script>
 import Projects from '@/components/cmpProjects'
+import { mutations } from "@/store"
 
 export default {
   components: {
@@ -34,6 +36,10 @@ export default {
     this.getTags()
   },
   methods: {
+    goHome () {
+      mutations.setGoToIdInHomeView('stack')
+      this.$router.push('/')
+    },
     filter (event) {
       this.currentFilter = event
       this.$refs.projectsComp.filterProjects(event)

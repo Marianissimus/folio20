@@ -1,8 +1,8 @@
 <template>
   <span class="theme-select">
-    <button v-for="(background, index) in backgrounds" :key="index" @click="setbgColor(background)" :class="[background, bgColor === background? 'active-theme' : '']">
+    <button v-for="(background, index) in backgrounds" :key="index" @click="setbgColor(background)" :class="[background, bgColor === background? 'active-theme' : '']" aria-label="Set Background Color">
     </button>
-    <button class="close-theme-selector" @click="$emit('closeThemeSelector')">
+    <button class="close-theme-selector" @click="$emit('closeThemeSelector')" aria-label="Close theme selector">
      <span>X</span>
     </button>
   </span>

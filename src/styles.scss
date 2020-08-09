@@ -37,6 +37,34 @@ $fontTernary: 'Roboto', sans-serif;
   font-weight: 100;
   line-height: 2rem;
 }
+// transitions
+// global
+
+  .landing-enter-active{
+    opacity: 1;
+    transition: all .5s ease-in-out;
+  }
+
+  .landing-enter {
+    opacity: 0;
+    transition: all .5s ease-in-out;
+  }
+
+
+// landing view
+
+.aboutfirst-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 1s 2s ease-in-out;
+}
+
+.aboutfirst-enter {
+  transform: translateY(100px);
+  opacity: 0;
+}
+
+
 
 // sections //
 

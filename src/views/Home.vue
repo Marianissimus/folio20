@@ -3,11 +3,15 @@
     <animated-logo :direction="'forwards'"/>
   </div>
   <div class='home' v-else>
-    <About/>
+    <transition :name="aboutTransition" appear>
+      <About/>
+    </transition>
     <transition name="landing">
       <Projects v-if="projects" :homeFilter="'featured'" :projects="projects" :from="'home'">
       </Projects>
     </transition>
+    <btn-w-icon
+      :beforeIcon="'arrow-right'" :afterIcon="'arrow-right'" :text="'More Projects'" :direction="'right'" @click.native="goToProjects()" style="margin-top: 70px" aria-label="Go To Projects Page"/>
     <transition name="landing">
       <Stack />
     </transition>
@@ -44,6 +48,15 @@ export default {
       isScrolledEnough: false
     }
   },
+  computed: {
+    aboutTransition () {
+      // apply shorter transition if re-route from a different view
+      if (this.idInHomeView) {
+        return 'landing'
+      }
+      return 'aboutfirst'
+    }
+  },
   created () {
     db.collection("projects")
     .orderBy("position", "asc")
@@ -66,10 +79,10 @@ export default {
     if (this.idInHomeView) {
       // scroll to id if click on link from another view
       document.getElementById(this.idInHomeView).scrollIntoView()
-      mutations.setGoToIdInHomeView(null)
     }
   },
   beforeDestroy () {
+    mutations.setGoToIdInHomeView(null)
     window.removeEventListener('unload', this.scrollToTop)
   },
   methods: {
@@ -78,6 +91,9 @@ export default {
         top: 0,
         left: 0
       })
+    },
+    goToProjects () {
+      this.$router.push('/projects')
     }
   }
 }

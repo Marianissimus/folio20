@@ -14,7 +14,7 @@
           appear-to-class="link-appear-to-class"
           appear-active-class="link-appear-active-class"
         >
-          <span @click="scrollTo('top')" :style="{'transition-delay': '400ms'}">Marian Vidoe</span>
+          <span @click="scrollTo('top')" :style="{'transition-delay': '300ms'}">Marian Vidoe</span>
         </transition>
       </div>
       <div class="nav-links">
@@ -25,7 +25,7 @@
           appear-active-class="link-appear-active-class"
           v-for="(link, index) in links" :key="link.text + index"
         >
-          <span @click="scrollTo(link.element)" :style="{'transition-delay': 400 + index * 400  + 'ms'}">{{ link.text }}</span>
+          <span @click="scrollTo(link.element)" :style="{'transition-delay': 300 + index * 300  + 'ms'}">{{ link.text }}</span>
         </transition>
       </div>
       <div class="options">
