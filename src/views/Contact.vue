@@ -16,7 +16,7 @@
         </transition>
       </div>
       <div class="form-row">
-        <label for="name">Email</label>
+        <label for="email">Email</label>
         <input v-model="user.email" type="email" name="email" id="email" class="form-rowInput"/>
         <transition name="fade">
           <div class="error" v-if="errors.email">{{ errors.email }}</div>
@@ -230,11 +230,5 @@ export default {
     color: white;
   }
 
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-  }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
-  }
 }
 </style>

@@ -55,18 +55,12 @@ export default {
   overflow: hidden;
   bottom: 1em;
   right: 1em;
+  z-index: 10;
 }
 
 #back-to-top:hover{
   background-color: black;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: 0.1s all ease-out;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
 
 </style>

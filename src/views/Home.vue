@@ -18,7 +18,6 @@
     <transition name="landing">
       <Contact />
     </transition>
-    <back-to-top-btn />
   </div>
 </template>
 
@@ -27,7 +26,6 @@ import Projects from '@/components/cmpProjects.vue'
 import About from '@/views/About.vue'
 import Contact from '@/views/Contact.vue'
 import Stack from '@/views/Stack.vue'
-import cmpBackToTopBtn from '@/components/cmpBackToTopBtn'
 import { db } from '@/firebaseInit'
 import { mutations } from "@/store"
 import AnimatedLogo from '@/components/cmpAnimatedLogo'
@@ -39,7 +37,6 @@ export default {
     About: About,
     Contact: Contact,
     Stack: Stack,
-    'back-to-top-btn': cmpBackToTopBtn,
     'animated-logo': AnimatedLogo,
   },
   data () {

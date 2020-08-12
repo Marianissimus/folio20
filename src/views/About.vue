@@ -68,16 +68,12 @@ export default {
   #profile {
     min-height: 90vh;
     @include shadowNeu;
-    @include shadowSmall;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: space-around;
     padding: 2rem;
     overflow: hidden;
-    @media only screen and (min-width: 1050px) {
-      padding: 1em;
-    }
   }
 
   .prof-img-container {
