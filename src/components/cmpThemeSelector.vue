@@ -30,8 +30,8 @@ export default {
     justify-content: center;
       @media only screen and (max-width: 600px) {
        flex-direction: column-reverse;
-       top: -320px;
-       left: 5px;
+       top: -310px;
+       left: 7px;
       }
     & button {
       margin: .5em 0;

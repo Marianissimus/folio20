@@ -185,10 +185,7 @@ export default {
 }
 
 .main-links {
-  @media only screen and (max-width: 600px) {
-    @include shadowSmall; // I''ll be testing and thinking about this
-  }
-  padding: 20px 10px;
+  padding: 20px 5px;
 }
 
 .selector-icon {
@@ -198,7 +195,6 @@ export default {
   cursor: pointer;
   @media only screen and (max-width: 600px) {
     padding: 13px 10px;
-    @include shadowSmall;
   }
   @media only screen and (max-width: 750px) {
     width: 30px;
