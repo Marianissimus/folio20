@@ -28,6 +28,11 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+      @media only screen and (max-width: 600px) {
+       flex-direction: column-reverse;
+       top: -320px;
+       left: 5px;
+      }
     & button {
       margin: .5em 0;
       height: 1em;

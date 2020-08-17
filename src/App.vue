@@ -1,15 +1,15 @@
 <template>
   <div id="app" :class="[bgColor, isModalVisible ? 'modal-backdrop' : '']">
-    <Navbar v-if="showNavbar && !isLogoAnimating"/>
+    <Navbar v-if="showNavbar && !isLogoAnimating" :isScrollingUp="isScrollingUp" @btnWasClicked="toggleBtnWasClicked"/>
     <transition name="modal-fade">
       <modal class="modal"
         v-show="isModalVisible"
       />
     </transition>
     <transition name="fade">
-      <router-view/>
+      <router-view @btnWasClicked="toggleBtnWasClicked"/>
     </transition>
-    <back-to-top-btn />
+    <back-to-top-btn :showButton="showButton"/>
   </div>
 </template>
 
@@ -22,12 +22,49 @@ export default {
   components: {
     'Navbar': Navbar,
     'modal': Modal,
-    'back-to-top-btn': cmpBackToTopBtn,
+    'back-to-top-btn': cmpBackToTopBtn
+  },
+  data () {
+    return {
+      prevScroll: 0,
+      scrollPos: 0,
+      btnWasClicked: false,
+      isScrollingUp: true // to show Navbar on init
+    }
   },
   computed: {
     showNavbar () {
       let routesToDisplay = ['Home', 'Login', 'Projects']
       return routesToDisplay.includes(this.$route.name)
+    },
+    showButton () {
+      return this.scrollPos > 200
+    }
+  },
+  mounted () {
+    this.handleScroll()
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    toggleBtnWasClicked () {
+      this.btnWasClicked = true
+    },
+    showOrHideNavbar () {
+      if (this.btnWasClicked || this.scrollPos < this.prevScroll) {
+        this.isScrollingUp = true
+      } else {
+        this.isScrollingUp = false
+      }
+      this.btnWasClicked = false
+    },
+    handleScroll () {
+      window.addEventListener('scroll', () => {
+        this.scrollPos = window.scrollY
+        this.showOrHideNavbar()
+        this.prevScroll = this.scrollPos
+      })
     }
   }
 }
@@ -54,5 +91,6 @@ export default {
     background-color: rgba(1, 1, 1, .3);
   }
 }
+
 
 </style>

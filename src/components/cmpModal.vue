@@ -55,14 +55,18 @@ export default {
     z-index: 5000;
     position: absolute;
     top: 40px;
-    right: 5%;
+    right: 40px;
     background-color: black;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+    @media only screen and (max-width: 600px) {
+      top: 20px;
+      right: 20px;
+    }
     & span {
       position:absolute;
-      top: 50%;
+      top: 53%;
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 30px;

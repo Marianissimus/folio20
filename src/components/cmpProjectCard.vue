@@ -60,6 +60,9 @@ export default {
     }
   },
   methods: {
+    isScreenOrientationHorizontal () {
+      return window.innerWidth > window.innerHeight
+    },
     getHoverStart (link) {
       let el = 'span[name=' + link  + ']'
       this.$el.querySelector(el).classList.add('visibleTooltip')
@@ -72,7 +75,11 @@ export default {
       this.isClicked = false
     },
     showModal(pic) {
-      mutations.setModalImage(require('@/assets/images/projects/' + pic))
+      if (this.isScreenOrientationHorizontal()) {
+        mutations.setModalImage(require('@/assets/images/projects/' + pic))
+      } else {
+        mutations.setModalImage(require('@/assets/images/projects/' +  pic.split('.')[0] + '_portrait.' + pic.split('.')[1]))
+      }
       mutations.showModal()
     },
     closeModal () {

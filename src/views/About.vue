@@ -54,9 +54,13 @@ export default {
 
 <style lang="scss">
   .about-view {
-    margin: 3em auto 0 auto;
+    margin: 0 auto 0 auto;
+    margin-top: calc(3em + 80px);
     width: 90vw;
     max-width: 900px;
+      @media only screen and (max-width: 600px) {
+      margin-top: 3em;
+    }
   }
 
   .about-link {

@@ -37,6 +37,7 @@ export default {
   },
   methods: {
     goHome () {
+      this.$emit('btnWasClicked')
       mutations.setGoToIdInHomeView('stack')
       this.$router.push('/')
     },
@@ -90,9 +91,13 @@ export default {
 .heading {
   display: flex;
   max-width: 90vw;
-  margin: 2em auto 0 auto;
+  margin: 0 auto;
+  margin-top: calc(3em + 80px); // 80px height of navbar
   padding: 1em;
   align-items: center;
+  @media only screen and (max-width: 600px) {
+    margin-top: 3em;
+  }
 }
 
 .heading-links {

@@ -11,39 +11,17 @@
 
 <script>
 export default {
-  data () {
-    return {
-      showButton: false
-    }
-  },
-  mounted () {
-    this.handleScroll()
-  },
-  destroyed () {
-    window.removeEventListener('scroll', this.handleScroll);
-  },
+  props: ['showButton'],
   methods: {
-    scrollToTop () {
+  scrollToTop () {
       window.scrollTo({
         top: 0,
         left: 0
-      })
-    },
-    handleScroll () {
-      window.addEventListener('scroll', () => {
-       var scrollPos = window.scrollY
-        if (scrollPos > 200) {
-          this.showButton = true
-        }
-        else {
-          this.showButton = false
-        }
       })
     }
   }
 }
 </script>
-
 
 <style lang="scss">
 #back-to-top {

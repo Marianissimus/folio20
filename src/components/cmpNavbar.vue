@@ -5,8 +5,8 @@
     appear-class="nav-appear-class"
     appear-to-class="nav-appear-to-class"
     >
-    <div id="nav">
-      <animated-logo :width="30" :direction="'reverse'" @click.native="scrollTo('top')" style="cursor: pointer;"/>
+    <div id="nav" :class="[bgColor, isScrollingUp ? 'showNavbar' : 'hideNavbar' ]">
+      <animated-logo :width="30" :direction="'reverse'" @click.native="scrollTo('top')" style="cursor: pointer;" />
       <div class="nav-name nav-element">
         <transition
           appear
@@ -14,7 +14,7 @@
           appear-to-class="link-appear-to-class"
           appear-active-class="link-appear-active-class"
         >
-          <span @click="scrollTo('top')" :style="{'transition-delay': '300ms'}">Marian Vidoe</span>
+          <span @click="scrollTo('top')" class="main-links" :style="{'transition-delay': '300ms'}">Marian Vidoe</span>
         </transition>
       </div>
       <div class="nav-links">
@@ -25,7 +25,7 @@
           appear-active-class="link-appear-active-class"
           v-for="(link, index) in links" :key="link.text + index"
         >
-          <span @click="scrollTo(link.element)" :style="{'transition-delay': 300 + index * 300  + 'ms'}">{{ link.text }}</span>
+          <span @click="scrollTo(link.element)" :style="{'transition-delay': 300 + index * 300  + 'ms'}" class="main-links">{{ link.text }}</span>
         </transition>
       </div>
       <div class="options">
@@ -51,6 +51,7 @@ import AnimatedLogo from '@/components/cmpAnimatedLogo'
 import { mutations } from "@/store"
 
 export default {
+  props: ['isScrollingUp'],
   data () {
     return {
       links: [
@@ -79,6 +80,7 @@ export default {
       this.showThemeSelector = false
     },
     scrollTo (where) {
+      this.$emit('btnWasClicked')
       if (this.$route.name !== 'Home') {
         mutations.setGoToIdInHomeView(where)
         this.$router.push('/')
@@ -90,7 +92,7 @@ export default {
         })
       }
       else {
-        document.getElementById(where).scrollIntoView({behavior: "smooth"})
+        document.getElementById(where).scrollIntoView()
       }
     }
   }
@@ -120,14 +122,12 @@ export default {
 .link-appear-class {
   transition: all 1s;
   transform: scale(0);
-  opacity: 0;
   transform-origin: center center;
 }
 
 .link-appear-to-class {
   transition: all 1s;
   transform: scale(1);
-  opacity: 1;
   transform-origin: center center;
 }
 
@@ -140,6 +140,26 @@ export default {
   font-family: $fontPrimary;
   height: 80px;
   @include shadowNeu;
+  position: -webkit-fixed;
+  position: fixed;
+  z-index: 100;
+}
+
+.showNavbar {
+  transition: all 1s;
+  transform: translateY(0);
+  @media only screen and (max-width: 600px) {
+    bottom: 0;
+  }
+}
+
+.hideNavbar {
+  transition: all 1s;
+  transform: translateY(-100px);
+  @media only screen and (max-width: 600px) {
+    bottom: 0;
+    transform: translateY(100px);
+  }
 }
 
 .nav-links, .nav-name {
@@ -158,10 +178,17 @@ export default {
   font-size: 20px;
   text-decoration: none;
   cursor: pointer;
-  margin-right: 10px;
+  margin-right: 15px;
   @media only screen and (max-width: 750px) {
-    font-size: 16px;
+    font-size: 1em;
   }
+}
+
+.main-links {
+  @media only screen and (max-width: 600px) {
+    @include shadowSmall; // I''ll be testing and thinking about this
+  }
+  padding: 20px 10px;
 }
 
 .selector-icon {
@@ -169,9 +196,14 @@ export default {
   height: 36px;
   margin-right: 2em;
   cursor: pointer;
+  @media only screen and (max-width: 600px) {
+    padding: 13px 10px;
+    @include shadowSmall;
+  }
   @media only screen and (max-width: 750px) {
     width: 30px;
     height: 30px;
+    margin-right: 1em;
   }
 }
 
