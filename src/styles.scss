@@ -40,7 +40,8 @@ $fontTernary: 'Roboto', sans-serif;
 // transitions
 // global
 
-}
+  .landing-enter-active{
+    opacity: 1;
     transition: all .5s ease-in-out;
   }
 
