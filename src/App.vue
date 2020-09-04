@@ -52,6 +52,7 @@ export default {
       this.btnWasClicked = true
     },
     showOrHideNavbar () {
+      if (this.idInHomeView) return false // don't display navbar on get back from 'projects'
       if (this.btnWasClicked || this.scrollPos < this.prevScroll) {
         this.isScrollingUp = true
       } else {

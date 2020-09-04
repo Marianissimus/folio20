@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section style="margin-top: 120px;">
     <form novalidate="true"
       id="loginForm"
       @submit.prevent="login"

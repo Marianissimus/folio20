@@ -38,7 +38,7 @@ export default {
   methods: {
     goHome () {
       this.$emit('btnWasClicked')
-      mutations.setGoToIdInHomeView('stack')
+      mutations.setGoToIdInHomeView('goToProjBtn')
       this.$router.push('/')
     },
     filter (event) {

@@ -11,7 +11,8 @@
       </Projects>
     </transition>
     <btn-w-icon
-      :beforeIcon="'arrow-right'" :afterIcon="'arrow-right'" :text="'More Projects'" :direction="'right'" @click.native="goToProjects()" style="margin-top: 70px" aria-label="Go To Projects Page"/>
+      id="goToProjBtn"
+      :beforeIcon="'arrow-right'" :afterIcon="'arrow-right'" :text="'More Projects'" :direction="'right'" @click.native="goToProjects()" aria-label="Go To Projects Page"/>
     <transition name="landing">
       <Stack />
     </transition>
@@ -41,8 +42,7 @@ export default {
   },
   data () {
     return {
-      projects: null,
-      isScrolledEnough: false
+      projects: null
     }
   },
   computed: {
@@ -74,8 +74,7 @@ export default {
   },
   updated () {
     if (this.idInHomeView) {
-      // scroll to id if click on link from another view
-      document.getElementById(this.idInHomeView).scrollIntoView()
+      this.scrollToWherever()
     }
   },
   beforeDestroy () {
@@ -83,6 +82,10 @@ export default {
     window.removeEventListener('unload', this.scrollToTop)
   },
   methods: {
+    async scrollToWherever() {
+     let el = await document.getElementById(this.idInHomeView)
+     el.scrollIntoView()
+    },
     scrollToTop () {
       window.scrollTo({
         top: 0,
