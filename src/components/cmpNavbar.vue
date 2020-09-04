@@ -112,10 +112,7 @@ export default {
 .link-appear-to-class {
   transform: scale(1);
   transform-origin: center center;
-  webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  -ms-transition: all 1s ease;
+  transition: all 1s;
 }
 
 #nav {
