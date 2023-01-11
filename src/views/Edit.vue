@@ -156,7 +156,7 @@ export default {
           console.error("Error writing document: ", error)
         })
       } else {
-        db.collection("projects").doc(this.editing.name).add(this.editing)
+        db.collection("projects").doc(this.editing.name).set(this.editing)
         .then(function() {
           console.log("Document successfully added!")
         })
