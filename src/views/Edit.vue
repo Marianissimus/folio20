@@ -102,7 +102,7 @@ export default {
     }
   },
   created () {
-     this.projects = JSON.parse(localStorage.getItem('projects'))
+     this.projects = JSON.parse(sessionStorage.getItem('projects'))
      this.getEmails()
   },
   methods: {

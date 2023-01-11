@@ -12,6 +12,7 @@ export const store = Vue.observable({
 export const mutations = {
   setbgColor(bgColor) {
     store.bgColor = bgColor
+    sessionStorage.setItem('MVbackgroundColor', bgColor)
   },
   setModalImage(img) {
     store.modalImage = img

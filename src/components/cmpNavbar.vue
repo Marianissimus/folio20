@@ -30,7 +30,18 @@
         appear-active-class="link-appear-active-class"
       >
       <div class="selector-icon" @click.stop="showThemeSelector = !showThemeSelector" :style="{'transition-delay': '1500ms' }">
-        <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 25 25"><defs/><path fill="#FFF" d="M12.53 25a12.5 12.5 0 010-25 13.17 13.17 0 0110.31 4.89c2.76 3.56 2.46 6.36 1.26 7.79a2.76 2.76 0 01-3.45.78c-1.65-.87-3-.37-3.56.58s-.16 2.57 2 3.76a2.81 2.81 0 011.2 3.2c-.5 2-2.8 4-7.76 4zm0-24a11.5 11.5 0 000 23c4.39 0 6.39-1.66 6.8-3.21a1.81 1.81 0 00-.78-2.12c-2.69-1.52-3.1-3.71-2.34-5.11s2.68-2.16 4.9-1a1.79 1.79 0 002.22-.56c.91-1 1.12-3.41-1.33-6.5A12.32 12.32 0 0012.53 1zm-1 21A2.5 2.5 0 1114 19.5a2.5 2.5 0 01-2.5 2.5zm0-4A1.5 1.5 0 1013 19.5a1.5 1.5 0 00-1.5-1.5zm-5-1A2.5 2.5 0 119 14.5 2.5 2.5 0 016.5 17zm0-4A1.5 1.5 0 108 14.5 1.5 1.5 0 006.5 13zm2-3A2.5 2.5 0 1111 7.5 2.5 2.5 0 018.5 10zm0-4A1.5 1.5 0 1010 7.5 1.5 1.5 0 008.5 6zm7 3A2.5 2.5 0 1118 6.5 2.5 2.5 0 0115.5 9zm0-4A1.5 1.5 0 1017 6.5 1.5 1.5 0 0015.5 5z" data-name="Paint Color Palette"/></svg>
+        <svg width="36" height="40" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" aria-hidden="true">
+         <g>
+          <g id="svg_9">
+           <path fill="none" d="m18.49229,1.78496c-7.9166,0 -16.96547,4.51186 -16.96547,17.25602c0,9.25415 7.02646,19.17406 17.77554,19.17406l0.16109,0c4.03655,-0.07195 8.38148,-2.65757 8.38148,-8.15942c0,-1.05374 -0.39675,-1.96631 -0.74472,-2.77051c-0.0939,-0.2122 -0.18319,-0.42077 -0.26512,-0.63207c-0.79535,-1.98088 0.08193,-2.70585 2.14393,-4.15758c2.3354,-1.64481 5.53518,-3.8962 5.49376,-9.85343c0,-3.54192 -3.90583,-10.85707 -15.9805,-10.85707zm0.5155,32.05847c-2.06292,0 -3.68306,-1.60292 -3.68306,-3.6421c0,-2.041 1.62014,-3.64392 3.68306,-3.64392c2.06016,0 3.6803,1.60292 3.6803,3.64392c0,2.03918 -1.61922,3.6421 -3.6803,3.6421z" id="svg_2" stroke="#ffffff"/>
+           <circle cx="33.08456" cy="14.15881" r="3.5" fill="#0575e6" id="svg_3" transform="matrix(0.920532, 0, 0, 0.910749, -3.14877, 0.537109)" stroke="#ffffff"/>
+           <circle cx="24.37018" cy="7.87013" r="3.5" fill="#870223" id="svg_4" transform="matrix(0.920532, 0, 0, 0.910749, -3.14877, 0.537109)" stroke="#ffffff"/>
+           <circle cx="14.37018" cy="12.87013" r="3.5" fill="#7832ff" id="svg_5" transform="matrix(0.920532, 0, 0, 0.910749, -3.14877, 0.537109)" stroke="#ffffff"/>
+           <circle cx="13.37018" cy="23.87013" r="3.5" fill="#201aac" id="svg_6" transform="matrix(0.920532, 0, 0, 0.910749, -3.14877, 0.537109)" stroke="#ffffff"/>
+          </g>
+         </g>
+
+        </svg>
       </div>
       </transition>
       <theme-selector class="theme-selector" v-if="showThemeSelector" @closeThemeSelector="showThemeSelector = false"  v-click-outside="collapseThemeSelector"/>
@@ -104,15 +115,12 @@ export default {
 }
 
 .link-appear-class {
-  transform: scale(0);
-  will-change: transform;
-  transform-origin: center center;
+  opacity: 0;
 }
 
 .link-appear-to-class {
-  transform: scale(1);
-  transform-origin: center center;
   transition: all 1s;
+  opacity: 1;
 }
 
 #nav {
@@ -185,13 +193,18 @@ export default {
   height: 36px;
   margin-right: 2em;
   cursor: pointer;
+  position: relative;
+  left: -2px;
   @media only screen and (max-width: 600px) {
     padding: 13px 10px;
+    top: -6px;
+    left: -2px;
   }
   @media only screen and (max-width: 750px) {
     width: 30px;
     height: 30px;
     margin-right: 1em;
+    top: -4px;
   }
 }
 

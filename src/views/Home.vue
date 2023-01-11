@@ -64,12 +64,14 @@ export default {
         testProjects.push(doc.data())
       })
       this.projects = testProjects
-      localStorage.setItem('projects', JSON.stringify(testProjects))
+      sessionStorage.setItem('projects', JSON.stringify(testProjects))
     })
     .catch(error => console.log("Error getting document:", error) )
     window.addEventListener('unload', this.scrollToTop)
   },
   mounted () {
+    const savedBkColor = sessionStorage.getItem('MVbackgroundColor') || null
+    if(savedBkColor) this.setbgColor(savedBkColor)
     setTimeout (() => mutations.setLogoAnimating(false), 2000)
   },
   updated () {
@@ -82,6 +84,7 @@ export default {
     window.removeEventListener('unload', this.scrollToTop)
   },
   methods: {
+    setbgColor: mutations.setbgColor,
     async scrollToWherever() {
      let el = await document.getElementById(this.idInHomeView)
      el.scrollIntoView()
