@@ -52,6 +52,9 @@
           <div class="form-row">
             <label for="tags">Tags, coma separated:</label>
             <input type="text" name="tags" id="tags" v-model="editing.tags[0]">
+            <br />
+            <br />
+            <h3>All tags currently are: {{getTags(1, this.projects)}}</h3>
           </div>
           <div class="form-row">
             <label for="featured">Featured on Main Page:</label>
@@ -88,6 +91,7 @@ import { db } from '@/firebaseInit'
 import cmpSectionHeader from '@/components/cmpSectionHeader'
 import 'firebase/auth'
 import { mutations } from '@/store'
+import { getTags } from "@/shared"
 
 export default {
   components: {
@@ -106,6 +110,7 @@ export default {
      this.getEmails()
   },
   methods: {
+    getTags,
     addnew () {
       // used to quickly add projects via code
       // db.collection("projects").doc('Weather App').set(

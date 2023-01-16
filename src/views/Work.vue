@@ -18,6 +18,7 @@
 <script>
 import Projects from '@/components/cmpProjects'
 import { mutations } from "@/store"
+import { getTags } from "@/shared"
 
 export default {
   components: {
@@ -33,7 +34,7 @@ export default {
   },
   created () {
     this.projects = JSON.parse(sessionStorage.getItem('projects'))
-    this.getTags()
+    this.tags = getTags(2, this.projects)
   },
   methods: {
     goHome () {
@@ -54,35 +55,6 @@ export default {
         this.$refs.tabs.scrollLeft -= 100
       }
     },
-    getTags (minimum = 2) {
-      this.tags = []
-      // I want to display only tags with at least 'minimum' amount of projects
-      // I also want to sort them by no. of projects, any other sorting seems irrelevant
-      // I may develop this to get "minumum" val from a store.js, or options component
-
-      // filter all unique tags
-      let allTags = []
-      this.projects.forEach(el => el.tags.map(item => allTags.includes(item) ? '' : allTags.push(item)))
-
-      // get no of occurrances
-      let countedTags = []
-      allTags.forEach(el => {
-        let obj = {
-          name: el,
-          count: this.projects.filter(project => project.tags.includes(el)).length
-        }
-        if (obj.count < minimum) return
-        else {
-          countedTags.push(obj)
-        }
-      })
-      // // Sort tags by no of projects
-      let sorted = countedTags.sort(function(a, b){
-        return b.count - a.count;
-      })
-
-      sorted.map(el => this.tags.push(el.name))
-    }
   }
 }
 </script>
